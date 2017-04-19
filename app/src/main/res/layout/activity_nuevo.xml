@@ -17,15 +17,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="61dp" />
 
-     <TextView
-         android:layout_width="80dp"
-         android:layout_height="30dp"
-         android:id="@+id/nuevo"
-         android:text="NUEVO"
-         android:textAlignment="center"
-         android:layout_alignParentTop="true"
-         android:layout_alignRight="@+id/volver"
-         android:layout_alignEnd="@+id/volver"
-         android:layout_marginTop="57dp" />
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:id="@+id/nuevo"
+        android:text="NUEVO"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/volver"
+        android:layout_alignEnd="@+id/volver"
+        android:layout_marginTop="57dp" />
 
 </RelativeLayout>

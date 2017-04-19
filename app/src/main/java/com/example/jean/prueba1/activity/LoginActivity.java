@@ -24,6 +24,7 @@ import com.example.jean.prueba1.app.AppConfig;
 import com.example.jean.prueba1.helper.MySingleton;
 import com.example.jean.prueba1.helper.SessionManager;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -32,7 +33,6 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText inputUsuario, inputPassword;
-    private ProgressDialog pDIalog;
     private SessionManager session;
     final String TAG = this.getClass().getSimpleName();
 
@@ -45,9 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         inputPassword=(EditText) findViewById(R.id.password);
         btnLogin=(Button) findViewById(R.id.btnLogin);
 
-        //Dialogo de procesos
-        pDIalog=new ProgressDialog(this);
-        pDIalog.setCancelable(false);
 
         //Administrador de session
         session=new SessionManager(getApplicationContext());
@@ -82,19 +79,42 @@ public class LoginActivity extends AppCompatActivity {
     private void checkLogin(final String usuario, final String password) {
        // Toast.makeText(getApplicationContext(), getImei(this), Toast.LENGTH_LONG).show();
 
-        String url= AppConfig.URL_LOGIN;
-
-        StringRequest peticion = new StringRequest(Request.Method.POST, url,
+        StringRequest peticion = new StringRequest(Request.Method.POST, AppConfig.URL_LOGIN,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.d(TAG, response);
+
+
+                        try {
+                            JSONObject jObj = new JSONObject(response);
+                            String cod = jObj.getString("cod");
+                            String msg=jObj.getString("msg");
+
+                            // Buscar nodo de error en json
+                            if (cod.equals("1")) {
+                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                                session.setLogin(true);
+                                ingresarMenu();
+
+
+                            }else if(cod.equals("2")){
+                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            // JSON error
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+
+                        }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, "ERRRRRRRRRRORRRRRRR"+error);
+                        Log.d(TAG, "ERRRRRRRRRRORRRRRRR EN RESPONSE ->"+error);
                     }
                 }){
             @Override
@@ -108,6 +128,8 @@ public class LoginActivity extends AppCompatActivity {
         };
         MySingleton.getInstance(this).addToRequestQueue(peticion);
     }
+
+
 
     private void ingresarMenu() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
