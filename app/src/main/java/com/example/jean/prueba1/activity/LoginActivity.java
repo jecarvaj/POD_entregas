@@ -1,8 +1,11 @@
 package com.example.jean.prueba1.activity;
 
-import android.app.ProgressDialog;
+
 import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
@@ -14,10 +17,8 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.jean.prueba1.R;
 import com.example.jean.prueba1.app.AppConfig;
@@ -68,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                     checkLogin(usuario, password);
                 } else {
                     // Solicitar al usuario que introduzca sus credenciales
+
                     Toast.makeText(getApplicationContext(),
                             "Por favor ingrese sus datos!", Toast.LENGTH_LONG).show();
                 }
@@ -77,37 +79,42 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkLogin(final String usuario, final String password) {
-       // Toast.makeText(getApplicationContext(), getImei(this), Toast.LENGTH_LONG).show();
-
+        //creo y envio peticion por POST al server para verificar login
         StringRequest peticion = new StringRequest(Request.Method.POST, AppConfig.URL_LOGIN,
                 new Response.Listener<String>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(String response) { //la respuesta del servidor
                         Log.d(TAG, response);
-
-
                         try {
                             JSONObject jObj = new JSONObject(response);
                             String cod = jObj.getString("cod");
                             String msg=jObj.getString("msg");
-
-                            // Buscar nodo de error en json
-                            if (cod.equals("1")) {
-                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                                session.setLogin(true);
-                                ingresarMenu();
-
-
-                            }else if(cod.equals("2")){
-                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                            /* los codigos son:
+                             *0 => Usuario o contraseña inválida
+                             *1 => Datos correctos
+                             *2 => Datos correctos pero imei inválida
+                            */
+                            switch (cod) {
+                                case "1":
+                                    if (gpsActivo()) { //verifico si el gps está activo
+                                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                                        session.setLogin(true); //inicio session en celu con sessionmanager
+                                        ingresarMenu(); //Cambio al activity del menú
+                                    } else { //cuando no está activo del pgs
+                                        Toast.makeText(getApplicationContext(), "GPS ESTÁ DESACTIVADO!", Toast.LENGTH_LONG).show();
+                                    }
+                                    break;
+                                case "2":
+                                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                                    break;
+                                default:
+                                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                                    break;
                             }
                         } catch (JSONException e) {
                             // JSON error
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-
                         }
                     }
                 },
@@ -115,6 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d(TAG, "ERRRRRRRRRRORRRRRRR EN RESPONSE ->"+error);
+                        Toast.makeText(getApplicationContext(), "Sin conexión!", Toast.LENGTH_LONG).show();
                     }
                 }){
             @Override
@@ -142,4 +150,11 @@ public class LoginActivity extends AppCompatActivity {
                 .getSystemService(Context.TELEPHONY_SERVICE);
         return telephonyManager.getDeviceId();
     }
+
+    private boolean gpsActivo(){
+        LocationManager mlocManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);;
+        return mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+    }
+
+    
 }
