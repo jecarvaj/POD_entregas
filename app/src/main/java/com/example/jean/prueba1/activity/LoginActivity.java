@@ -137,9 +137,10 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    private static String getImei(Context c) {
+   private static String getImei(Context c) {
         TelephonyManager telephonyManager = (TelephonyManager) c
                 .getSystemService(Context.TELEPHONY_SERVICE);
         return telephonyManager.getDeviceId();
     }
+
 }
