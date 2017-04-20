@@ -1,7 +1,7 @@
 package com.example.jean.prueba1.app;
 
 // hola como estas ?
-
+//PERFECT
 
 public class AppConfig {
 
