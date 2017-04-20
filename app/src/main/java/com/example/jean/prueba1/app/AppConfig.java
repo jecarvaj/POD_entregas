@@ -1,8 +1,5 @@
 package com.example.jean.prueba1.app;
 
-/**
- * Created by Jean on 19-04-2017.
- */
 
 public class AppConfig {
 
