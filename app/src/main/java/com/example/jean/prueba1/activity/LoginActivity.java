@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.jean.prueba1.R;
 import com.example.jean.prueba1.app.AppConfig;
+import com.example.jean.prueba1.helper.Helper;
 import com.example.jean.prueba1.helper.MySingleton;
 import com.example.jean.prueba1.helper.SessionManager;
 
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText inputUsuario, inputPassword;
     private SessionManager session;
     final String TAG = this.getClass().getSimpleName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +68,11 @@ public class LoginActivity extends AppCompatActivity {
                 // Buscar datos vacíos en el formulario
                 if (!usuario.isEmpty() && !password.isEmpty()) {
                     // usuario de inicio de sesión
-                    checkLogin(usuario, password);
+                    if(Helper.isNetDisponible(getApplicationContext())){
+                        checkLogin(usuario, password);
+                    }else {
+                        Toast.makeText(getApplicationContext(), "SIN ACCESO A INTERNET!", Toast.LENGTH_LONG).show();
+                    }
                 } else {
                     // Solicitar al usuario que introduzca sus credenciales
 
@@ -96,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                             */
                             switch (cod) {
                                 case "1":
-                                    if (gpsActivo()) { //verifico si el gps está activo
+                                    if (Helper.gpsActivo(getApplicationContext())) { //verifico si el gps está activo
                                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
                                         session.setLogin(true); //inicio session en celu con sessionmanager
                                         ingresarMenu(); //Cambio al activity del menú
@@ -122,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d(TAG, "ERRRRRRRRRRORRRRRRR EN RESPONSE ->"+error);
-                        Toast.makeText(getApplicationContext(), "Sin conexión!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
                     }
                 }){
             @Override
@@ -130,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                 Map<String, String> params=new HashMap<>();
                 params.put("usuario" ,usuario);
                 params.put("password", password);
-                params.put("imei", getImei(getApplicationContext()));
+                params.put("imei", Helper.getImei(getApplicationContext()));
                 return params;
             }
         };
@@ -145,16 +151,9 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    private static String getImei(Context c) {
-        TelephonyManager telephonyManager = (TelephonyManager) c
-                .getSystemService(Context.TELEPHONY_SERVICE);
-        return telephonyManager.getDeviceId();
-    }
 
-    private boolean gpsActivo(){
-        LocationManager mlocManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);;
-        return mlocManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-    }
 
-    
+
+
+
 }
