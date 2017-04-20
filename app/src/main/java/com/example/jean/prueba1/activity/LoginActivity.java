@@ -2,6 +2,7 @@ package com.example.jean.prueba1.activity;
 // aweonao 
 //WEASDAS
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.location.LocationManager;
@@ -37,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText inputUsuario, inputPassword;
     private SessionManager session;
-    final String TAG = this.getClass().getSimpleName();
-
+    final String TAG = this.getClass().getSimpleName(); //para el log
+    final Activity activity=this; //Lo ocupo para llamar a getImeiVersion()
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         inputUsuario=(EditText) findViewById(R.id.usuario);
         inputPassword=(EditText) findViewById(R.id.password);
         btnLogin=(Button) findViewById(R.id.btnLogin);
-
 
         //Administrador de session
         session=new SessionManager(getApplicationContext());
@@ -66,19 +66,21 @@ public class LoginActivity extends AppCompatActivity {
                 String usuario = inputUsuario.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
 
-                // Buscar datos vacíos en el formulario
+                // Si no hay datos vacios
                 if (!usuario.isEmpty() && !password.isEmpty()) {
-                    // usuario de inicio de sesión
+                   //Verifico primero si hay internet
                     if(Helper.isNetDisponible(getApplicationContext())){
-                        checkLogin(usuario, password);
+                        if(Helper.permisoImei(getApplicationContext(), activity)){
+                            checkLogin(usuario, password);
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Debe otorgar permisos iniciar sesion!", Toast.LENGTH_SHORT).show();
+                        }
                     }else {
-                        Toast.makeText(getApplicationContext(), "SIN ACCESO A INTERNET!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "SIN ACCESO A INTERNET!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     // Solicitar al usuario que introduzca sus credenciales
-
-                    Toast.makeText(getApplicationContext(),
-                            "Por favor ingrese sus datos!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Ingrese sus datos!", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -108,20 +110,20 @@ public class LoginActivity extends AppCompatActivity {
                                         session.setLogin(true); //inicio session en celu con sessionmanager
                                         ingresarMenu(); //Cambio al activity del menú
                                     } else { //cuando no está activo del pgs
-                                        Toast.makeText(getApplicationContext(), "GPS ESTÁ DESACTIVADO!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "GPS ESTÁ DESACTIVADO!", Toast.LENGTH_SHORT).show();
                                     }
                                     break;
                                 case "2":
-                                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
                                     break;
                                 default:
-                                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
                                     break;
                             }
                         } catch (JSONException e) {
                             // JSON error
                             e.printStackTrace();
-                            Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -129,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.d(TAG, "ERRRRRRRRRRORRRRRRR EN RESPONSE ->"+error);
-                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }){
             @Override
