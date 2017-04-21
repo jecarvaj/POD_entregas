@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton retiro;
 
     private SessionManager session;
+    public boolean permiso = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,20 @@ public class MainActivity extends AppCompatActivity {
         { @Override public void onClick(View v) {
             Intent intent = new Intent (MainActivity.this, NuevoActivity.class);
             startActivity(intent); } });
+        /* ejemplo burdo de como desparecer un icono, odviamente tedremos que consultar a las base
+        de datos para crear los menus dependiendo de los servicio contratados por el usuario */
 
+            if (permiso == false)
+            {
+                nuevo.setVisibility(View.INVISIBLE);
+
+                /*
+                View.VISIBLE
+                View.INVISIBLE
+                View.GONE para desactivar
+
+                 */
+            }
 
         // Administrador de sesiones
         session = new SessionManager(getApplicationContext());
