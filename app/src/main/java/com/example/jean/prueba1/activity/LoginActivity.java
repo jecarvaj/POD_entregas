@@ -40,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
     private SessionManager session;
     final String TAG = this.getClass().getSimpleName(); //para el log
     final Activity activity=this; //Lo ocupo para llamar a getImeiVersion()
+        String usuario = null;
+    String password = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                String usuario = inputUsuario.getText().toString().trim();
-                String password = inputPassword.getText().toString().trim();
+                usuario = inputUsuario.getText().toString().trim();
+               password = inputPassword.getText().toString().trim();
 
                 // Si no hay datos vacios
                 if (!usuario.isEmpty() && !password.isEmpty()) {
@@ -85,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
     }
 
     private void checkLogin(final String usuario, final String password) {
@@ -150,6 +153,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void ingresarMenu() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.putExtra("parametro",usuario);
         startActivity(intent);
         finish();
     }
