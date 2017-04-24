@@ -21,10 +21,8 @@ import com.example.jean.prueba1.app.AppConfig;
 import com.example.jean.prueba1.helper.Helper;
 import com.example.jean.prueba1.helper.SessionManager;
 import com.example.jean.prueba1.helper.MySingleton;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView txtName;
     private TextView txtUsuario;
+    private TextView txtCuenta;
     private Button btnLogout;
     private ImageButton entrega;
     private ImageButton nuevo;
@@ -47,8 +46,14 @@ public class MainActivity extends AppCompatActivity {
     final String TAG = this.getClass().getSimpleName();
     private SessionManager session;
     public boolean permiso = false;
-    int retiros,nuevos,estadisticas,consultas,entregas;
+    String retiros,nuevos,estadisticas,consultas,entregas;
     String usuario;
+    String create;
+    String cuenta;
+    String deli;
+    String consu;
+    String esta;
+    String reti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,79 +73,22 @@ public class MainActivity extends AppCompatActivity {
         textEntrega= (TextView) findViewById(R.id.textentrega);
         textEstadistica= (TextView) findViewById(R.id.textestadistica);
         textRetiro= (TextView) findViewById(R.id.textretiro);
+        txtCuenta = (TextView)findViewById(R.id.cuenta);
 
 
-        /* ejemplo burdo de como desparecer un icono, odviamente tedremos que consultar a las base
-        de datos para crear los menus dependiendo de los servicio contratados por el usuario */
+
         // recibo el dato del usuario de la session
-       usuario =getIntent().getExtras().getString("parametro");
-
-        // obtener los parametros de la base de datos para reemplazar
-
-        retiros = 1;
-        nuevos= 0;
-        estadisticas=1;
-        consultas=1;
-        entregas=0;
-
-        if(nuevos==1)
-        {
-            nuevo.setVisibility(View.VISIBLE);
-            textNuevo.setVisibility(View.VISIBLE);
-        }
-        else if(nuevos ==0)
-        {
-            nuevo.setVisibility(View.INVISIBLE);
-            textNuevo.setVisibility(View.INVISIBLE);
-        }
-        if(retiros==1)
-        {
-            retiro.setVisibility(View.VISIBLE);
-            textRetiro.setVisibility(View.VISIBLE);
-        }
-        else if(retiros ==0)
-        {
-            retiro.setVisibility(View.INVISIBLE);
-            textRetiro.setVisibility(View.INVISIBLE);
-        }
-
-        if(estadisticas==1)
-        {
-            estadistica.setVisibility(View.VISIBLE);
-            textEstadistica.setVisibility(View.VISIBLE);
-        }
-        else if(estadisticas ==0)
-        {
-            estadistica.setVisibility(View.INVISIBLE);
-            textEstadistica.setVisibility(View.INVISIBLE);
-        }
-        if(consultas==1)
-        {
-            consulta.setVisibility(View.VISIBLE);
-            textConsulta.setVisibility(View.VISIBLE);
-        }
-        else if(consultas ==0)
-        {consulta.setVisibility(View.INVISIBLE);
-            textConsulta.setVisibility(View.INVISIBLE);
-
-        }
-        if(entregas==1)
-        {
-            entrega.setVisibility(View.VISIBLE);
-            textEntrega.setVisibility(View.VISIBLE);
-        }
-        else if(entregas ==0)
-        {
-            entrega.setVisibility(View.INVISIBLE);
-            textEntrega.setVisibility(View.INVISIBLE);
-        }
-
-        // modifica el texView con el usuario de la session
-
-         txtName.setText(usuario);
+        usuario =getIntent().getExtras().getString("parametro");
+        // llamada el metodo para chequear el tipo de menu del usuario logeado
+        checkMenu(usuario);
+        // mostramos el nombre de usuario
+        txtName.setText(usuario);
         txtName.setTextColor(Color.BLACK);
 
 
+        // el icono consulta lo dejo siempre visible
+            consulta.setVisibility(View.VISIBLE);
+            textConsulta.setVisibility(View.VISIBLE);
 
         // Administrador de sesiones
         session = new SessionManager(getApplicationContext());
@@ -148,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         if (!session.isLoggedIn()) {
             logoutUser();
         }
-
+        //  llamadas a las activitys consulta y nuevo
         consulta.setOnClickListener(new View.OnClickListener()
         { @Override public void onClick(View v) {
             Intent intent1 = new Intent (MainActivity.this, ConsultaActivity.class);
@@ -175,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Cerrar la sesión del usuario. Se establecerá el indicador isLoggedIn en false en shared
-    // preferences Borra los datos de usuario de la tabla sqlite users
 
     private void logoutUser() {
         session.setLogin(false);
@@ -186,7 +133,107 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    private void checkMenu(final String usuario) {
+        //creo y envio peticion por POST al server para verificar login
+        StringRequest peticion1 = new StringRequest(Request.Method.POST, AppConfig.URL_MENU,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) { //la respuesta del servidor
+                        Log.d(TAG, response);
+                        try {
+                            JSONObject jObj = new JSONObject(response);
+                            // extraemos los datos necesarios para armar el menu
+                            cuenta =jObj.getString("cuenta");
+                            create=jObj.getString("create");
+                            deli=jObj.getString("deli");
+                            reti=jObj.getString("reti");
+                            esta =jObj.getString("esta");
+                            // mostramos la cuenta del usuario
+                            txtCuenta.setText(cuenta);
+                            txtCuenta.setTextColor(Color.BLACK);
+                            txtCuenta.setVisibility(View.VISIBLE);
+                         // comprobamos por la visibilidad del icono "nuevo"
+                            switch (create) {
+                                case "1":
+                                    nuevo.setVisibility(View.VISIBLE);
+                                    textNuevo.setVisibility(View.VISIBLE);
 
+                                    break;
+                                case "0":
+                                    nuevo.setVisibility(View.INVISIBLE);
+                                    textNuevo.setVisibility(View.INVISIBLE);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            // comprobamos por la visibilidad del icono "entregas"
+                            switch (deli) {
+                                case "1":
+                                    entrega.setVisibility(View.VISIBLE);
+                                    textEntrega.setVisibility(View.VISIBLE);
+
+                                    break;
+                                case "0":
+                                    entrega.setVisibility(View.INVISIBLE);
+                                    textEntrega.setVisibility(View.INVISIBLE);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            // comprobamos por la visibilidad del icono "retiros"
+                            switch (reti) {
+                                case "1":
+                                    retiro.setVisibility(View.VISIBLE);
+                                    textRetiro.setVisibility(View.VISIBLE);
+
+                                    break;
+                                case "0":
+                                    retiro.setVisibility(View.INVISIBLE);
+                                    textRetiro.setVisibility(View.INVISIBLE);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            // comprobamos por la visibilidad del icono "estadisticas"
+                            switch (esta) {
+                                case "1":
+                                    estadistica.setVisibility(View.VISIBLE);
+                                    textEstadistica.setVisibility(View.VISIBLE);
+
+                                    break;
+                                case "0":
+                                    estadistica.setVisibility(View.INVISIBLE);
+                                    textEstadistica.setVisibility(View.INVISIBLE);
+                                    break;
+                                default:
+                                    break;
+                            }
+
+
+                        } catch (JSONException e) {
+                            // JSON error
+                            e.printStackTrace();
+                          // Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d(TAG, "ERRRRRRRRRRORRRRRRR EN RESPONSE ->"+error);
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params=new HashMap<>();
+                params.put("usuario" ,usuario);
+
+                return params;
+            }
+        };
+        MySingleton.getInstance(this).addToRequestQueue(peticion1);
+    }
 
 
 
