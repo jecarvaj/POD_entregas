@@ -11,29 +11,30 @@
         android:layout_height="70dp"
         android:id="@+id/entrega"
         android:background="@drawable/entrega"
-        android:layout_marginRight="19dp"
-        android:layout_marginEnd="19dp"
-        android:layout_alignTop="@+id/retiro"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_below="@+id/name"
         android:layout_toLeftOf="@+id/btnLogout"
-        android:layout_toStartOf="@+id/btnLogout" />
+        android:layout_toStartOf="@+id/btnLogout"
+        android:layout_marginTop="13dp" />
     <ImageButton
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/retiro"
         android:background="@drawable/moto"
-        android:layout_alignTop="@+id/name"
-        android:layout_toRightOf="@+id/btnLogout"
-        android:layout_toEndOf="@+id/btnLogout"
-        android:layout_marginTop="19dp" />
+        android:layout_above="@+id/estadisticas"
+        android:layout_toRightOf="@+id/textconfiguracion"
+        android:layout_toEndOf="@+id/textconfiguracion" />
 
     <ImageButton
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/estadisticas"
         android:background="@drawable/estadistica"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="21dp"
         android:layout_below="@+id/entrega"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
 
     <ImageButton
         android:layout_width="70dp"
@@ -49,8 +50,8 @@
         android:id="@+id/configuracion"
         android:background="@drawable/configuracion"
         android:layout_below="@+id/nuevo"
-        android:layout_alignRight="@+id/textestadistica"
-        android:layout_alignEnd="@+id/textestadistica" />
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView" />
 
     <ImageButton
         android:layout_width="70dp"
@@ -74,6 +75,18 @@
         android:layout_below="@+id/imageView"
         android:layout_alignLeft="@+id/configuracion"
         android:layout_alignStart="@+id/configuracion" />
+
+    <TextView
+        android:id="@+id/cuenta"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:text="cuenta"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:visibility="visible"
+        tools:text="cuenta" />
 
 
     <Button
@@ -103,12 +116,13 @@
         android:id="@+id/textentrega"
         android:layout_width="70dp"
         android:layout_height="40dp"
+        android:layout_alignLeft="@+id/entrega"
+        android:layout_alignStart="@+id/entrega"
+        android:layout_below="@+id/entrega"
+        android:text="Entrega"
         android:textAlignment="center"
         android:visibility="visible"
-        tools:text="Entrega"
-        android:layout_below="@+id/entrega"
-        android:layout_alignLeft="@+id/entrega"
-        android:layout_alignStart="@+id/entrega" />
+        tools:text="Entrega" />
 
     <TextView
         android:id="@+id/textconfiguracion"
