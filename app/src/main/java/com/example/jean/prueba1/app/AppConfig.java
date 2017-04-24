@@ -6,7 +6,8 @@ package com.example.jean.prueba1.app;
 public class AppConfig {
 
     //Direccion IP  del servidor
-    public static String SERVER="http://192.168.0.10/";
+    //public static String SERVER="http://192.168.0.10/";
+    public static String SERVER="http://192.168.1.109/";
 
 
 
