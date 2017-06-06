@@ -11,12 +11,12 @@
         android:layout_width="140dp"
         android:layout_height="30dp"
 
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="20dp"
         android:text="CONSULTAR"
         android:textAlignment="center"
-        tools:text="CONSULTAR" />
+        tools:text="CONSULTAR"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -54,10 +54,7 @@
         android:id="@+id/numero_orden"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/linearLayout"
-        android:layout_alignStart="@+id/linearLayout"
-        android:layout_below="@+id/consulta"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="14dp"
         android:background="@color/white"
         android:hint="ingrese numero de orden"
         android:inputType="text"
@@ -65,10 +62,13 @@
         android:singleLine="true"
         android:textColor="@color/input_login"
         android:textColorHint="@color/input_login_hint"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:layout_below="@+id/consulta"
+        android:layout_alignLeft="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <ImageButton
+        android:id="@+id/boton_buscar"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignBottom="@+id/numero_orden"
@@ -81,58 +81,84 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_above="@+id/volver"
+        android:layout_height="240dp"
         android:layout_alignLeft="@+id/volver"
         android:layout_alignStart="@+id/volver"
+        android:layout_below="@+id/recepcionista"
         android:layout_gravity="center"
-        android:layout_marginBottom="23dp"
+        android:layout_marginTop="17dp"
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
 
         <TextView
-            android:id="@+id/detalle"
+            android:id="@+id/nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detalle de la orden" />
+            android:text="nombre Movil :" />
 
         <TextView
             android:id="@+id/nombre_cliente"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="27dp"
             android:text="Cliente:" />
 
         <TextView
-            android:id="@+id/eatado"
+            android:id="@+id/numero"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Estado:" />
+            android:text="Numero : " />
+
+        <TextView
+            android:id="@+id/estado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="estado: " />
 
         <TextView
             android:id="@+id/logistico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Logistico:" />
-
-        <TextView
-            android:id="@+id/recepcionista"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Recepcionista:" />
-
-        <TextView
-            android:id="@+id/cargo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cargo:" />
-
+            android:text="nombre movil:" />
         <TextView
             android:id="@+id/direccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Direccíon" />
+            android:text="Direccion de entrega:" />
+
+
+
+        <TextView
+            android:id="@+id/observacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="observacion:" />
+
+
+
+
+
+        <TextView
+            android:id="@+id/fecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="fecha y hora de entrega:" />
+
+        <TextView
+            android:id="@+id/manifiesto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="manifiesto:" />
+
+        <TextView
+            android:id="@+id/ciudad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ciudad:" />
+
+
+
 
         <ImageView
             android:layout_width="60dp"
@@ -145,14 +171,14 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_alignEnd="@+id/imageView2"
-        android:layout_alignRight="@+id/imageView2"
-        android:layout_alignTop="@+id/linearLayout"
+        android:layout_height="240dp"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:layout_alignTop="@+id/linearLayout"
+        android:layout_alignRight="@+id/boton_buscar"
+        android:layout_alignEnd="@+id/boton_buscar">
 
 
         <TextView
@@ -199,5 +225,16 @@
 
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/recepcionista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/numero_orden"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:text="Recepcionista:" />
 
 </RelativeLayout>
