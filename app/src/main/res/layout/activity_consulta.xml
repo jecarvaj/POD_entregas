@@ -89,19 +89,21 @@
         android:layout_marginTop="17dp"
         android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:weightSum="1">
 
 
         <TextView
             android:id="@+id/nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="nombre Movil :" />
+            android:text="nombre Movil :"
+            android:layout_weight="0.39" />
 
         <TextView
             android:id="@+id/nombre_cliente"
             android:layout_width="match_parent"
-            android:layout_height="27dp"
+            android:layout_height="wrap_content"
             android:text="Cliente:" />
 
         <TextView
@@ -116,11 +118,7 @@
             android:layout_height="wrap_content"
             android:text="estado: " />
 
-        <TextView
-            android:id="@+id/logistico"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="nombre movil:" />
+
         <TextView
             android:id="@+id/direccion"
             android:layout_width="match_parent"
@@ -133,7 +131,15 @@
             android:id="@+id/observacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="observacion:" />
+            android:text="observacion:"
+            android:layout_weight="0.17" />
+        <TextView
+            android:id="@+id/descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="descripcion:"
+            android:layout_weight="0.17" />
+
 
 
 
@@ -158,14 +164,6 @@
             android:text="ciudad:" />
 
 
-
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/degradado2" />
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -176,13 +174,14 @@
         android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
+        android:weightSum="1"
         android:layout_alignTop="@+id/linearLayout"
         android:layout_alignRight="@+id/boton_buscar"
         android:layout_alignEnd="@+id/boton_buscar">
 
 
         <TextView
-            android:id="@+id/detalle2"
+            android:id="@+id/nombre2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dato1" />
@@ -194,34 +193,54 @@
             android:text="Dato2" />
 
         <TextView
-            android:id="@+id/estado2"
+            android:id="@+id/numero2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dato3" />
 
         <TextView
-            android:id="@+id/logistico2"
+            android:id="@+id/estado2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dato4" />
 
-        <TextView
-            android:id="@+id/recepcionista2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dato5" />
 
-        <TextView
-            android:id="@+id/cargo2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dato6" />
+
 
         <TextView
             android:id="@+id/direccion2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dato7" />
+            android:text="Dato5"
+            android:layout_weight="0.18" />
+        <TextView
+            android:id="@+id/observacion2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dato6"
+            android:layout_weight="0.12" />
+        <TextView
+            android:id="@+id/descripcion2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dato7"
+             />
+        <TextView
+            android:id="@+id/fecha2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dato8"
+            android:layout_weight="0.16" />
+        <TextView
+            android:id="@+id/manifiesto2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dato9" />
+        <TextView
+            android:id="@+id/ciudad2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dato10" />
 
 
     </LinearLayout>
