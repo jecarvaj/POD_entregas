@@ -154,11 +154,12 @@ public class MainActivity extends AppCompatActivity {
                             txtCuenta.setVisibility(View.VISIBLE);
                          // comprobamos por la visibilidad del icono "nuevo"
                             switch (create) {
-                                case "1":
+                              /*  case "1":
                                     nuevo.setVisibility(View.VISIBLE);
                                     textNuevo.setVisibility(View.VISIBLE);
 
                                     break;
+                                    */
                                 case "0":
                                     nuevo.setVisibility(View.INVISIBLE);
                                     textNuevo.setVisibility(View.INVISIBLE);
@@ -168,11 +169,13 @@ public class MainActivity extends AppCompatActivity {
                             }
                             // comprobamos por la visibilidad del icono "entregas"
                             switch (deli) {
+                                /*
                                 case "1":
                                     entrega.setVisibility(View.VISIBLE);
                                     textEntrega.setVisibility(View.VISIBLE);
 
                                     break;
+                                    */
                                 case "0":
                                     entrega.setVisibility(View.INVISIBLE);
                                     textEntrega.setVisibility(View.INVISIBLE);
@@ -182,11 +185,13 @@ public class MainActivity extends AppCompatActivity {
                             }
                             // comprobamos por la visibilidad del icono "retiros"
                             switch (reti) {
+                                /*
                                 case "1":
                                     retiro.setVisibility(View.VISIBLE);
                                     textRetiro.setVisibility(View.VISIBLE);
 
                                     break;
+                                    */
                                 case "0":
                                     retiro.setVisibility(View.INVISIBLE);
                                     textRetiro.setVisibility(View.INVISIBLE);
@@ -196,11 +201,13 @@ public class MainActivity extends AppCompatActivity {
                             }
                             // comprobamos por la visibilidad del icono "estadisticas"
                             switch (esta) {
+                                /*
                                 case "1":
                                     estadistica.setVisibility(View.VISIBLE);
                                     textEstadistica.setVisibility(View.VISIBLE);
 
                                     break;
+                                    */
                                 case "0":
                                     estadistica.setVisibility(View.INVISIBLE);
                                     textEstadistica.setVisibility(View.INVISIBLE);

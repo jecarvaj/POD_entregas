@@ -5,9 +5,7 @@ package com.example.jean.prueba1.app;
 
 public class AppConfig {
 
-    //Direccion IP  del servidor
-    //public static String SERVER="http://192.168.0.10/";
-    public static String SERVER="http://58690895.esy.es/";
+
 
 
 
@@ -16,6 +14,8 @@ public class AppConfig {
 
 
     public static String URL_MENU = SERVER+"prueba1/menu.php";
+
+    public static String URL_WAYBILL = SERVER+"prueba1/activityNuevo.php";
 
 
 }
