@@ -7,7 +7,7 @@ public class AppConfig {
 
     //Direccion IP  del servidor
     //public static String SERVER="http://192.168.0.10/";
-    public static String SERVER="http://192.168.1.109/";
+    public static String SERVER="http://58690895.esy.es/";
 
 
 

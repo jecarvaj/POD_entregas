@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(Helper.permisoImei(getApplicationContext(), activity)){
                             checkLogin(usuario, password);
                         }else{
-                            Toast.makeText(getApplicationContext(), "Debe otorgar permisos iniciar sesion!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Debe otorgar permisos para iniciar sesion!", Toast.LENGTH_SHORT).show();
                         }
                     }else {
                         Toast.makeText(getApplicationContext(), "SIN ACCESO A INTERNET!", Toast.LENGTH_SHORT).show();
