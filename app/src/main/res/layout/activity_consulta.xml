@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible">
+    android:visibility="visible"
+    android:gravity="center"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/consulta"
@@ -29,17 +31,7 @@
         android:layout_marginTop="26dp"
         android:background="@drawable/iconomf" />
 
-    <ImageButton
-        android:id="@+id/volver"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp"
-        android:background="@drawable/volver" />
+
 
     <TextView
         android:id="@+id/textView2"
@@ -49,40 +41,204 @@
         android:layout_centerHorizontal="true"
         android:text="nuevo"
         android:textAlignment="center" />
+<LinearLayout
 
+    android:id="@+id/layoutConsulta"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_below="@id/consulta">
     <EditText
         android:id="@+id/numero_orden"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
         android:background="@color/white"
-        android:hint="ingrese numero de orden"
-        android:inputType="text"
+        android:hint="Ingrese número de orden"
+        android:inputType="number"
         android:padding="10dp"
-        android:singleLine="true"
+        android:maxLines="1"
         android:textColor="@color/primary_text"
         android:textColorHint="@color/secondary_text"
-        android:visibility="visible"
-        android:layout_below="@+id/consulta"
-        android:layout_alignLeft="@+id/linearLayout"
-        android:layout_alignStart="@+id/linearLayout" />
+     />
 
     <ImageButton
         android:id="@+id/boton_buscar"
         android:layout_width="50dp"
         android:layout_height="45dp"
-        android:layout_alignBottom="@+id/numero_orden"
-        android:layout_toRightOf="@+id/numero_orden"
         android:background="@drawable/ic_search_white_48dp"
          />
 
+</LinearLayout>
+
+<ScrollView
+    android:id="@+id/scrollviewConsulta"
+    android:layout_marginTop="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/layoutConsulta"
+    android:visibility="invisible"
+
+    >
+    <LinearLayout
+        android:background="@drawable/layout_borde"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/layoutConsulta">
+            <TextView
+                android:id="@+id/nombre"
+                android:text="Nombre Movil :"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/nombre2"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta">
+            <TextView
+                android:id="@+id/nombre_cliente"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.65"
+                android:text="Cliente:" />
+                />
+            <TextView
+                android:id="@+id/nombre_cliente2"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.35"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta">
+            <TextView
+                android:id="@+id/numero"
+                android:text="Número:"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/numero2"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta">
+            <TextView
+                android:id="@+id/estado"
+                android:text="Estado:"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/estado2"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta">
+            <TextView
+                android:id="@+id/direccion"
+                android:text="Dirección de entrega:"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/direccion2"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta">
+            <TextView
+                android:id="@+id/observacion"
+                android:text="Observación:"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/observacion2"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta">
+            <TextView
+                android:id="@+id/descripcion"
+                android:text="Descripción:"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/descripcion2"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta">
+            <TextView
+                android:id="@+id/fecha"
+                android:text="Fecha y hora entrega:"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/fecha2"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta">
+            <TextView
+                android:id="@+id/manifiesto"
+                android:text="Manifiesto:"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/manifiesto2"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta"
+            android:background="@color/primary_light">
+            <TextView
+                android:id="@+id/ciudad"
+                android:text="Número:"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/ciudad2"
+                style="@style/tv_consulta1"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+    <!--
     <LinearLayout
         android:id="@+id/linearLayout"
+        android:layout_below="@id/layoutConsulta"
         android:layout_width="150dp"
         android:layout_height="240dp"
         android:layout_alignLeft="@+id/volver"
         android:layout_alignStart="@+id/volver"
-        android:layout_below="@+id/recepcionista"
         android:layout_gravity="center"
         android:layout_marginTop="17dp"
         android:orientation="vertical"
@@ -91,18 +247,9 @@
         android:weightSum="1">
 
 
-        <TextView
-            android:id="@+id/nombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="nombre Movil :"
-            android:layout_weight="0.39" />
 
-        <TextView
-            android:id="@+id/nombre_cliente"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cliente:" />
+
+
 
         <TextView
             android:id="@+id/numero"
@@ -178,17 +325,9 @@
         android:layout_alignEnd="@+id/boton_buscar">
 
 
-        <TextView
-            android:id="@+id/nombre2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dato1" />
 
-        <TextView
-            android:id="@+id/nombre_cliente2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dato2" />
+
+
 
         <TextView
             android:id="@+id/numero2"
@@ -253,5 +392,19 @@
         android:layout_marginEnd="56dp"
         android:layout_marginRight="56dp"
         android:text="Recepcionista:" />
+
+
+    <ImageButton
+        android:id="@+id/volver"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:foregroundGravity="bottom"
+        android:background="@drawable/volver" />  -->
 
 </RelativeLayout>

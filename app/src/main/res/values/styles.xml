@@ -47,4 +47,21 @@
         <item name="android:layout_centerHorizontal">true</item>
     </style>
 
+    <style name="tv_consulta1">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Este es un texto de prueba y blablabla</item>
+    </style>
+
+    <style name="layoutConsulta">
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:background">@drawable/layout_borde2</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:weightSum">1</item>
+    </style>
+
+
 </resources>

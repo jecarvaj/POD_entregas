@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +57,7 @@ public class ConsultaActivity extends AppCompatActivity {
     private TextView manifiesto2;
     private TextView ciudad2;
     private TextView direccion2;
-
+    private ScrollView scrollviewConsulta;
     private TextView ciudad;
     private TextView direccion;
     String waybill_orden;
@@ -71,6 +72,7 @@ public class ConsultaActivity extends AppCompatActivity {
         buscar_waybill=(ImageButton) findViewById(R.id.boton_buscar) ;
         waybill= (EditText) findViewById(R.id.numero_orden) ;
         text= (TextView)findViewById(R.id.textView2) ;
+        scrollviewConsulta=(ScrollView) findViewById(R.id.scrollviewConsulta);
         // enlazamos nuestro parametros
         nombre= (TextView)findViewById(R.id.nombre) ;
         nombre_cliente= (TextView)findViewById(R.id.nombre_cliente) ;
@@ -127,6 +129,7 @@ public class ConsultaActivity extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
 
 
+        /* lo elimino por mientras porque echa a perder toda la cuestion
         volver = (ImageButton)findViewById(R.id.volver);
         // volvemos al main
         volver.setOnClickListener(new View.OnClickListener() {
@@ -137,15 +140,17 @@ public class ConsultaActivity extends AppCompatActivity {
                 startActivity(intent1);
 
             }
-        });
+        });*/
         buscar_waybill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 waybill_orden= waybill.getText().toString().trim();
-                checkWaybill(waybill_orden,usuario);
+
                 if (waybill_orden.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Debe ingresar el numero de orden!", Toast.LENGTH_SHORT).show();
 
+                }else{
+                    checkWaybill(waybill_orden,usuario);
                 }
 
 
@@ -162,9 +167,12 @@ public class ConsultaActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) { //la respuesta del servidor
-                        Log.d(TAG, response);
+                        Log.d("CONEXION", response);
                         try {
+
+
                             JSONObject jObj = new JSONObject(response);
+                            Log.d("CONEXION", jObj.toString());
                             // extraemos los datos necesarios para armar el menu
                             descripcion1="1";
                             nombre1 =jObj.getString("nombre1");
@@ -186,6 +194,8 @@ public class ConsultaActivity extends AppCompatActivity {
                             ciudad3 =jObj.getString("ciudad3");
                             direccion1 =jObj.getString("direccion1");
                             direccion3 =jObj.getString("direccion3");
+                            estado1=jObj.getString("estado1");
+                            estado3=jObj.getString("estado3");
                           //  direccion1 =jObj.getString("direccion1");
                             // mostramos la cuenta del usuario
                            // txtCuenta.setText(cuenta);
@@ -193,6 +203,9 @@ public class ConsultaActivity extends AppCompatActivity {
                           //  txtCuenta.setVisibility(View.VISIBLE);*/
                             // comprobamos por la visibilidad del icono "nuevo"
                             if(numero3.equals(waybill_orden)) {
+                                //se visualiza el view
+                                scrollviewConsulta.setVisibility(View.VISIBLE);
+
                                 switch (nombre1) {
                                     case "1":
                                         nombre.setVisibility(View.VISIBLE);
@@ -234,6 +247,8 @@ public class ConsultaActivity extends AppCompatActivity {
 
                                     case "1":
                                         estado.setVisibility(View.VISIBLE);
+                                        estado2.setText(estado3);
+                                        estado2.setVisibility(View.VISIBLE);
 
 
                                         break;
@@ -391,6 +406,7 @@ public class ConsultaActivity extends AppCompatActivity {
                             }
                         } catch (JSONException e) {
                             // JSON error
+                            Log.d("CONEXION", e.toString());
                             e.printStackTrace();
                             // Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
