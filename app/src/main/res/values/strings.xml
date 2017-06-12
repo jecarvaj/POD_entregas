@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--LOGINN-->
+
+
+    <string name="login">Login</string>
+    <string name="recuperar">Recuperar contraseña</string>
 
     <string name="app_name">POD prueba de entrega</string>
     <string name="hint_usuario">Usuario</string>

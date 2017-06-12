@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/primary"
     android:layout_height="match_parent"
     >
 
@@ -10,7 +11,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/entrega"
-        android:background="@drawable/entrega"
+        android:background="@drawable/entrega2"
         android:layout_marginRight="17dp"
         android:layout_marginEnd="17dp"
         android:layout_below="@+id/name"
@@ -21,7 +22,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/retiro"
-        android:background="@drawable/moto"
+        android:background="@drawable/moto2"
         android:layout_above="@+id/estadisticas"
         android:layout_toRightOf="@+id/textconfiguracion"
         android:layout_toEndOf="@+id/textconfiguracion" />
@@ -30,7 +31,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/estadisticas"
-        android:background="@drawable/estadistica"
+        android:background="@drawable/estadistica2"
         android:layout_marginTop="21dp"
         android:layout_below="@+id/entrega"
         android:layout_alignRight="@+id/imageView"
@@ -40,7 +41,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/consulta"
-        android:background="@drawable/consulta"
+        android:background="@drawable/consulta2"
         android:layout_below="@+id/textestadistica"
         android:layout_alignLeft="@+id/textentrega"
         android:layout_alignStart="@+id/textentrega" />
@@ -48,7 +49,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/configuracion"
-        android:background="@drawable/configuracion"
+        android:background="@drawable/configuracion2"
         android:layout_below="@+id/nuevo"
         android:layout_alignLeft="@+id/imageView"
         android:layout_alignStart="@+id/imageView" />
@@ -57,7 +58,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/nuevo"
-        android:background="@drawable/nuevo"
+        android:background="@drawable/nuevo2"
         android:layout_below="@+id/textestadistica"
         android:layout_alignLeft="@+id/textretiro"
         android:layout_alignStart="@+id/textretiro" />
@@ -88,14 +89,15 @@
         android:visibility="visible"
         tools:text="cuenta" />
 
-
+    <!-- saco boton por mientras-->
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="106dp"
         android:layout_height="40dp"
-        android:background="@drawable/degradado"
+        style="@style/boton"
         android:text="@string/btn_logout"
         android:textAllCaps="false"
+        android:visibility="visible"
         android:textColor="@color/white"
         android:textSize="15dp"
         android:layout_marginBottom="18dp"

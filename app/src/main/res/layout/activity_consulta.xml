@@ -60,8 +60,8 @@
         android:inputType="text"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="@color/input_login"
-        android:textColorHint="@color/input_login_hint"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/secondary_text"
         android:visibility="visible"
         android:layout_below="@+id/consulta"
         android:layout_alignLeft="@+id/linearLayout"
@@ -70,13 +70,11 @@
     <ImageButton
         android:id="@+id/boton_buscar"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_alignBottom="@+id/numero_orden"
-        android:layout_marginLeft="21dp"
-        android:layout_marginStart="21dp"
-        android:layout_toEndOf="@+id/numero_orden"
         android:layout_toRightOf="@+id/numero_orden"
-        app:srcCompat="@drawable/consulta" />
+        android:background="@drawable/ic_search_white_48dp"
+         />
 
     <LinearLayout
         android:id="@+id/linearLayout"
