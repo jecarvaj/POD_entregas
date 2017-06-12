@@ -179,6 +179,7 @@ public class ConsultaActivity extends AppCompatActivity {
                             observacion3 =jObj.getString("observacion3");
                            descripcion3=jObj.getString("descripcion3");
                             fecha1=jObj.getString("fecha1");
+                            fecha3=jObj.getString("fecha3");
                             manifiesto1=jObj.getString("manifiesto1");
                             manifiesto3=jObj.getString("manifiesto3");
                             ciudad1 =jObj.getString("ciudad1");
@@ -300,6 +301,8 @@ public class ConsultaActivity extends AppCompatActivity {
 
                                     case "1":
                                         fecha.setVisibility(View.VISIBLE);
+                                        fecha2.setText(fecha3);
+                                        fecha2.setVisibility(View.VISIBLE);
 
 
                                         break;

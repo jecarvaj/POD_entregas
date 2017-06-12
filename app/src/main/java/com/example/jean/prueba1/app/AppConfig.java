@@ -7,6 +7,8 @@ public class AppConfig {
 
 
 
+    //public static String SERVER="http://192.168.0.13/";
+    public static String SERVER="http://190.102.225.129/";
 
 
     // URL de inicio de sesión del servidor
