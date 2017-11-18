@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="primary">#FF9800</color>
-    <color name="primary_dark">#F57C00</color>
-    <color name="primary_darker">#893505</color>
-    <color name="primary_light">#FFE0B2</color>
-    <color name="accent">#FF5722</color>
+
+    <color name="primary_darker">#3036ab</color>
+
+
+
+    <color name="primary">#01579b</color>
+    <color name="primary_dark">#002f6c
+    </color>
+    <color name="primary_light">#4f83cc</color>
+    <color name="accent">#00bcd4</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
-    <color name="icons">#212121</color>
+    <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
 
     <color name="black">#000000</color>
@@ -20,5 +25,8 @@
     <color name="base">#AAAAAA</color>
     <color name="iron">#CCCCCC</color>
     <color name="white">#FFFFFF</color>
-
+    <color name="amarillo">#cabe17</color>
+    <color name="rojo">#bf2020</color>
+    <color name="verde">#16b44b</color>
+    <color name="celeste">#408bc1</color>
 </resources>

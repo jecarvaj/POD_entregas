@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtName;
     private TextView txtUsuario;
     private TextView txtCuenta;
-    private Button btnLogout;
+    private ImageButton btnLogout;
     private ImageButton entrega;
     private ImageButton nuevo;
     private ImageButton consulta;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         txtName = (TextView) findViewById(R.id.name);
         txtUsuario = (TextView) findViewById(R.id.usuario);
-        btnLogout = (Button) findViewById(R.id.btnLogout);
+        btnLogout = (ImageButton) findViewById(R.id.btnLogout);
         entrega =(ImageButton) findViewById(R.id.entrega);
         nuevo =(ImageButton) findViewById(R.id.nuevo);
         consulta =(ImageButton) findViewById(R.id.consulta);

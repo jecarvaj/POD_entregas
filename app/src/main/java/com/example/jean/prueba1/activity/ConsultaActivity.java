@@ -123,24 +123,13 @@ public class ConsultaActivity extends AppCompatActivity {
         ciudad2.setVisibility(View.INVISIBLE);
         direccion2.setVisibility(View.INVISIBLE);
 
-
+// obtenemos el usuario del activity anterior
         usuario =getIntent().getExtras().getString("parametro");
         text.setText(usuario);
         session = new SessionManager(getApplicationContext());
 
 
-        /* lo elimino por mientras porque echa a perder toda la cuestion
-        volver = (ImageButton)findViewById(R.id.volver);
-        // volvemos al main
-        volver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent (ConsultaActivity.this, MainActivity.class);
-                intent1.putExtra("parametro",usuario);
-                startActivity(intent1);
-
-            }
-        });*/
+      // obtenemos el waybill
         buscar_waybill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,6 +139,7 @@ public class ConsultaActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Debe ingresar el numero de orden!", Toast.LENGTH_SHORT).show();
 
                 }else{
+                    // llamo al metodo que obtendra todos los datos del activity
                     checkWaybill(waybill_orden,usuario);
                 }
 
@@ -162,7 +152,7 @@ public class ConsultaActivity extends AppCompatActivity {
 
     }
     private void checkWaybill(final String waybill_orden,final String usuario) {
-        //creo y envio peticion por POST al server para verificar login
+        //creo y envio peticion por POST al server para verificar waybill
         StringRequest peticion2 = new StringRequest(Request.Method.POST, AppConfig.URL_WAYBILL,
                 new Response.Listener<String>() {
                     @Override
@@ -173,7 +163,7 @@ public class ConsultaActivity extends AppCompatActivity {
 
                             JSONObject jObj = new JSONObject(response);
                             Log.d("CONEXION", jObj.toString());
-                            // extraemos los datos necesarios para armar el menu
+                            // extraemos los datos necesarios para armar el activyty consulta
                             descripcion1="1";
                             nombre1 =jObj.getString("nombre1");
                             nombre3 =jObj.getString("nombre3");
@@ -202,6 +192,9 @@ public class ConsultaActivity extends AppCompatActivity {
                           //  txtCuenta.setTextColor(Color.BLACK);
                           //  txtCuenta.setVisibility(View.VISIBLE);*/
                             // comprobamos por la visibilidad del icono "nuevo"
+
+
+                            // comprobamos si el waybill es valido
                             if(numero3.equals(waybill_orden)) {
                                 //se visualiza el view
                                 scrollviewConsulta.setVisibility(View.VISIBLE);
@@ -222,9 +215,7 @@ public class ConsultaActivity extends AppCompatActivity {
                                     default:
                                         break;
                                 }
-                                // comprobamos por la visibilidad del icono "entregas"
 
-                                // comprobamos por la visibilidad del icono "retiros"
                                 switch (numero1) {
 
                                     case "1":

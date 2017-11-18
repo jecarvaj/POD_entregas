@@ -4,26 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="info.androidhive.loginandregistration.activity.Nuevo">
+    android:background="@color/white">
 
-    <ImageButton
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:id="@+id/volver"
-        android:background="@drawable/volver"
-        tools:layout_editor_absoluteY="416dp"
-        tools:layout_editor_absoluteX="157dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="61dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/iconomf"
-        android:layout_marginTop="13dp"
+        android:background="@drawable/tecsoft"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/nuevo"
         android:layout_alignStart="@+id/nuevo" />
@@ -34,19 +23,145 @@
         android:id="@+id/nuevo"
         android:text="NUEVO"
         android:textAlignment="center"
-        android:layout_marginTop="154dp"
-        android:layout_below="@+id/imageView"
-        android:layout_alignRight="@+id/volver"
-        android:layout_alignEnd="@+id/volver" />
+        android:layout_below="@+id/textusuario"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textusuario"
-        android:layout_width="60dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/imageView"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_below="@+id/imageView"
         android:text="nuevo"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_below="@+id/imageView"
+        android:layout_alignRight="@+id/nuevo"
+        android:layout_alignEnd="@+id/nuevo" />
+
+
+    <ImageButton
+        android:id="@+id/btnCarga"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="ENVIAR"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/nuevo"
+        android:layout_alignStart="@+id/nuevo"
+        android:background="@drawable/enviar"
+        android:layout_marginBottom="14dp" />
+
+
+    <LinearLayout
+        android:id="@+id/borde"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_below="@+id/nuevo"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/layout_borde"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/direccion3"
+            style="@android:style/Widget.EditText"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/ciudad3"
+            android:layout_alignStart="@+id/ciudad3"
+            android:layout_below="@+id/ciudad3"
+            android:hint="ingrese la direccion"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/ciudad3"
+            style="@android:style/Widget.Holo.EditText"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/nuevo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:hint="ingrese la ciudad"
+            android:inputType="text" />
+
+        <Spinner
+            android:id="@+id/spinnerTipo"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/spinnerCliente"
+            android:dropDownWidth="match_parent"
+            android:spinnerMode="dialog"
+            android:text="seleccione tipo"
+            android:visibility="visible" />
+
+        <Spinner
+            android:id="@+id/spinnerCliente"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/dateValue"
+            android:dropDownWidth="match_parent"
+            android:spinnerMode="dialog"
+            android:text="seleccione cliente" />
+
+        <EditText
+            android:id="@+id/descripcionNuevo"
+            style="@android:style/Widget.DeviceDefault.EditText"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/btnCarga"
+            android:layout_alignLeft="@+id/dateValue"
+            android:layout_alignStart="@+id/dateValue"
+
+            android:hint="ingrese Descripcion"
+            android:inputType="text" />
+
+
+        <Spinner
+            android:id="@+id/spinnerCarga"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/btnCarga"
+            android:layout_centerHorizontal="true"
+
+            android:spinnerMode="dialog"
+            android:text="seleccione carga" />
+
+
+    <LinearLayout
+        android:id="@+id/borde2"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_below="@+id/nuevo"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/layout_borde"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/btnCalendar"
+            style="@android:style/Widget.Holo.ImageButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+
+            android:background="@drawable/calendario"
+            android:text="@string/calendar"
+            android:layout_below="@+id/borde"
+            android:layout_toLeftOf="@+id/nuevo"
+            android:layout_toStartOf="@+id/nuevo" />
+
+
+        <TextView
+            android:id="@+id/dateValue"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+
+            android:layout_alignLeft="@+id/textusuario"
+            android:layout_alignStart="@+id/textusuario"
+            android:layout_below="@+id/borde"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
 
 </RelativeLayout>

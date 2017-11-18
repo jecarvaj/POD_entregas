@@ -6,9 +6,9 @@ package com.example.jean.prueba1.app;
 public class AppConfig {
 
 
-
-    //public static String SERVER="http://192.168.0.13/";
-    public static String SERVER="http://190.102.225.129/";
+// cambiar direccion del server
+ // public static String SERVER="http://192.168.0.12/";
+public static String SERVER="http://192.168.0.103/";
 
 
     // URL de inicio de sesión del servidor
@@ -18,6 +18,10 @@ public class AppConfig {
     public static String URL_MENU = SERVER+"prueba1/menu.php";
 
     public static String URL_WAYBILL = SERVER+"prueba1/activityNuevo.php";
+
+  public static String URL_NUEVO = SERVER+"prueba1/nuevo.php";
+
+  public static String URL_FORMULARIO = SERVER+"prueba1/formulario.php";
 
 
 }

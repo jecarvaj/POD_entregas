@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,7 +36,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    private Button btnLogin;
+    private ImageButton btnLogin;
     private EditText inputUsuario, inputPassword;
     private SessionManager session;
     final String TAG = this.getClass().getSimpleName(); //para el log
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
         inputUsuario=(EditText) findViewById(R.id.usuario);
         inputPassword=(EditText) findViewById(R.id.password);
-        btnLogin=(Button) findViewById(R.id.btnLogin);
+        btnLogin=(ImageButton) findViewById(R.id.btnLogin);
 
         //Administrador de session
         session=new SessionManager(getApplicationContext());
