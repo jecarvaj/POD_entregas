@@ -1,12 +1,10 @@
 package com.example.jean.prueba1.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,13 +25,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ConsultaActivity extends AppCompatActivity {
-
+public class Entrega2Activity extends AppCompatActivity {
     private SessionManager session;
-    private ImageButton volver;
-    private ImageButton buscar_waybill;
-
-    private Intent intent;
+    private TextView cuenta;
+    private String waybillEntrega2;
+    private String Usuario;
     private TextView text;
     private EditText waybill;
     private TextView nombre;
@@ -62,13 +58,20 @@ public class ConsultaActivity extends AppCompatActivity {
     String waybill_orden;
     final String TAG = this.getClass().getSimpleName();
     String usuario ,nombre1,nombre_cliente1,numero1,estado1,logistico1,observacion1,descripcion1,fecha1,manifiesto1,ciudad1,direccion1;
-   String nombre3,numero_cliente3,numero3,estado3,direccion3,observacion3,descripcion3,fecha3,manifiesto3,ciudad3,nombre_cliente3;
+    String nombre3,numero_cliente3,numero3,estado3,direccion3,observacion3,descripcion3,fecha3,manifiesto3,ciudad3,nombre_cliente3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consulta);
+        setContentView(R.layout.activity_entrega2);
+
+        cuenta = (TextView)findViewById(R.id.textCuenta2) ;
+
+        waybillEntrega2 =getIntent().getExtras().getString("parametro");
+            Usuario =getIntent().getExtras().getString("usuario");
+        cuenta.setText(waybillEntrega2);
+
+
         text= (TextView)findViewById(R.id.textView2) ;
-        buscar_waybill=(ImageButton) findViewById(R.id.boton_buscar) ;
         waybill= (EditText) findViewById(R.id.numero_orden) ;
         text= (TextView)findViewById(R.id.textView2) ;
         scrollviewConsulta=(ScrollView) findViewById(R.id.scrollviewConsulta);
@@ -122,34 +125,14 @@ public class ConsultaActivity extends AppCompatActivity {
         ciudad2.setVisibility(View.INVISIBLE);
         direccion2.setVisibility(View.INVISIBLE);
 
-        // obtenemos el usuario del activity anterior
-        usuario =getIntent().getExtras().getString("parametro");
-        text.setText(usuario);
         session = new SessionManager(getApplicationContext());
-
-
-        // obtenemos el waybill
-        buscar_waybill.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                waybill_orden= waybill.getText().toString().trim();
-
-                if (waybill_orden.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Debe ingresar el numero de orden!", Toast.LENGTH_SHORT).show();
-
-                }else{
-                    // llamo al metodo que obtendra todos los datos del activity
-                    checkWaybill(waybill_orden,usuario);
-                }
-
-
-            }
-        });
-
-        session = new SessionManager(getApplicationContext());
+        // llamo al metodo que obtendra todos los datos del activity
+        checkWaybill(waybillEntrega2,Usuario);
 
 
     }
+
+
     private void checkWaybill(final String waybill_orden,final String usuario) {
         //creo y envio peticion por POST al server para verificar waybill
         StringRequest peticion2 = new StringRequest(Request.Method.POST, AppConfig.URL_WAYBILL,
@@ -167,14 +150,14 @@ public class ConsultaActivity extends AppCompatActivity {
                             nombre1 =jObj.getString("nombre1");
                             nombre3 =jObj.getString("nombre3");
                             numero1=jObj.getString("numero1");
-                           numero3=jObj.getString("numero3");
-                         //  direccion1=jObj.getString("direccion1");
+                            numero3=jObj.getString("numero3");
+                            //  direccion1=jObj.getString("direccion1");
                             nombre_cliente1=jObj.getString("nombre_cliente1");
                             nombre_cliente3=jObj.getString("nombre_cliente3");
                             estado1=jObj.getString("estado1");
                             observacion1 =jObj.getString("observacion1");
                             observacion3 =jObj.getString("observacion3");
-                           descripcion3=jObj.getString("descripcion3");
+                            descripcion3=jObj.getString("descripcion3");
                             fecha1=jObj.getString("fecha1");
                             fecha3=jObj.getString("fecha3");
                             manifiesto1=jObj.getString("manifiesto1");
@@ -185,11 +168,11 @@ public class ConsultaActivity extends AppCompatActivity {
                             direccion3 =jObj.getString("direccion3");
                             estado1=jObj.getString("estado1");
                             estado3=jObj.getString("estado3");
-                          //  direccion1 =jObj.getString("direccion1");
+                            //  direccion1 =jObj.getString("direccion1");
                             // mostramos la cuenta del usuario
-                           // txtCuenta.setText(cuenta);
-                          //  txtCuenta.setTextColor(Color.BLACK);
-                          //  txtCuenta.setVisibility(View.VISIBLE);*/
+                            // txtCuenta.setText(cuenta);
+                            //  txtCuenta.setTextColor(Color.BLACK);
+                            //  txtCuenta.setVisibility(View.VISIBLE);*/
                             // comprobamos por la visibilidad del icono "nuevo"
 
 
@@ -201,8 +184,8 @@ public class ConsultaActivity extends AppCompatActivity {
                                 switch (nombre1) {
                                     case "1":
                                         nombre.setVisibility(View.VISIBLE);
-                                      nombre2.setText(nombre3);
-                                       nombre2.setVisibility(View.VISIBLE);
+                                        nombre2.setText(nombre3);
+                                        nombre2.setVisibility(View.VISIBLE);
 
 
                                         break;
@@ -284,24 +267,24 @@ public class ConsultaActivity extends AppCompatActivity {
                                     default:
                                         break;
                                 }
-                           switch (descripcion1) {
+                                switch (descripcion1) {
 
-                               case "1":
-                                   descripcion.setVisibility(View.VISIBLE);
-                                   descripcion2.setText(descripcion3);
+                                    case "1":
+                                        descripcion.setVisibility(View.VISIBLE);
+                                        descripcion2.setText(descripcion3);
 
-                                   descripcion2.setVisibility(View.VISIBLE);
+                                        descripcion2.setVisibility(View.VISIBLE);
 
 
-                                   break;
+                                        break;
 
-                               case "0":
-                                   descripcion.setVisibility(View.INVISIBLE);
+                                    case "0":
+                                        descripcion.setVisibility(View.INVISIBLE);
 
-                                   break;
-                               default:
-                                   break;
-                           }
+                                        break;
+                                    default:
+                                        break;
+                                }
                                 switch (fecha1) {
 
                                     case "1":
@@ -419,6 +402,4 @@ public class ConsultaActivity extends AppCompatActivity {
         };
         MySingleton.getInstance(this).addToRequestQueue(peticion2);
     }
-
-
 }

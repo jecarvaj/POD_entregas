@@ -1,39 +1,25 @@
 package com.example.jean.prueba1.activity;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import android.widget.Spinner;
-import android.app.ProgressDialog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-/*
-calendario
- */
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.widget.DatePicker;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -42,12 +28,23 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.jean.prueba1.R;
 import com.example.jean.prueba1.app.AppConfig;
-import com.example.jean.prueba1.helper.Helper;
 import com.example.jean.prueba1.helper.MySingleton;
 import com.example.jean.prueba1.helper.SessionManager;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+/*
+calendario
+ */
 public class NuevoActivity extends AppCompatActivity  {
 
     private SessionManager session;
@@ -180,7 +177,7 @@ public class NuevoActivity extends AppCompatActivity  {
 
 
 
-    public void formulario(final String usuario, final String enviarDireccion, final String enviarDescripcion,final String recibirCarga, final String recibirCliente, final String envioTipo, final String fecha, final String envioCiudad2) {
+    public void formulario(final String usuario, final String enviarDireccion, final String enviarDescripcion,final String envioCarga, final String envioCliente, final String envioTipo, final String fecha, final String envioCiudad2) {
         //creo y envio peticion por POST al server para verificar login
         StringRequest peticion = new StringRequest(Request.Method.POST, AppConfig.URL_FORMULARIO,
                 new Response.Listener<String>() {
@@ -215,8 +212,8 @@ public class NuevoActivity extends AppCompatActivity  {
                 params.put("usuario" ,usuario);
                 params.put("enviarDireccion" ,enviarDireccion);
                 params.put("enviarDescripcion" ,enviarDescripcion);
-                params.put("recibirCarga" ,recibirCarga);
-                params.put("recibirCliente" ,recibirCliente);
+                params.put("recibirCarga" ,envioCarga);
+                params.put("recibirCliente" ,envioCliente);
                 params.put("envioTipo" ,envioTipo);
                 params.put("tvDateValue" ,fecha);
                 params.put("envioCiudad2" ,envioCiudad2);
@@ -228,8 +225,9 @@ public class NuevoActivity extends AppCompatActivity  {
     }
 public void spinner(final String recibirCarga, final String recibirCliente)
 {
-    Toast.makeText(getApplicationContext(),recibirCliente, Toast.LENGTH_SHORT).show();
-    Toast.makeText(getApplicationContext(), recibirCarga, Toast.LENGTH_SHORT).show();
+    this.recibirCarga = recibirCarga;
+    this.recibirCliente = recibirCliente;
+
 
     String[] carga = {recibirCarga,"normal","pesado"};
     tipoCarga.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, carga));
@@ -238,7 +236,7 @@ public void spinner(final String recibirCarga, final String recibirCliente)
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
         {
-           Toast.makeText(adapterView.getContext(), (String) adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+         //  Toast.makeText(adapterView.getContext(), (String) adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
             envioCarga=  adapterView.getItemAtPosition(position).toString();
         }
 
@@ -257,7 +255,7 @@ public void spinner(final String recibirCarga, final String recibirCliente)
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
         {
-            Toast.makeText(adapterView.getContext(), (String) adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(adapterView.getContext(), (String) adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
             envioTipo=  adapterView.getItemAtPosition(position).toString();
         }
 
@@ -277,7 +275,7 @@ public void spinner(final String recibirCarga, final String recibirCliente)
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
         {
-            Toast.makeText(adapterView.getContext(), (String) adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(adapterView.getContext(), (String) adapterView.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
             envioCliente=  adapterView.getItemAtPosition(position).toString();
         }
 
@@ -308,7 +306,7 @@ public void spinner(final String recibirCarga, final String recibirCliente)
             }
 
            else{
-                formulario( usuario,  enviarDireccion,  enviarDescripcion, recibirCarga,  recibirCliente, envioTipo, fecha, envioCiudad2);
+                formulario( usuario,  enviarDireccion,  enviarDescripcion, envioCarga,  envioCliente, envioTipo, fecha, envioCiudad2);
 
            }
         }

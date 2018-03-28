@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/textviewName"
+        android:layout_marginRight="10dp"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/textviewFullForm"
+        android:layout_marginRight="10dp"
+        android:layout_width="160dp"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/textviewName"
+        android:layout_toRightOf="@+id/textviewName"
+
+
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/testViewPrioridad"
+        android:layout_width="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/textviewFullForm"
+        android:layout_toRightOf="@+id/textviewFullForm"
+
+
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/testViewEstado"
+        android:layout_marginRight="10dp"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/testViewPrioridad"
+        android:layout_toRightOf="@+id/testViewPrioridad"
+        android:layout_alignParentRight="true"
+        android:textSize="17sp" />
+
+</LinearLayout>

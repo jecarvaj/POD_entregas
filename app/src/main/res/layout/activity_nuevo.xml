@@ -11,11 +11,11 @@
         android:id="@+id/imageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/tecsoft"
+        android:layout_alignEnd="@+id/textusuario"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/nuevo"
-        android:layout_alignStart="@+id/nuevo" />
+        android:layout_alignRight="@+id/textusuario"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/igps" />
 
     <TextView
         android:layout_width="80dp"
@@ -52,110 +52,125 @@
 
     <LinearLayout
         android:id="@+id/borde"
-        android:layout_width="300dp"
+        android:layout_width="360dp"
         android:layout_height="350dp"
+
         android:layout_below="@+id/nuevo"
-        android:layout_centerHorizontal="true"
+
+        android:orientation="vertical"
+        android:padding="2dp"
+        android:layout_margin="10dp"
         android:background="@drawable/layout_borde"
-        android:orientation="vertical">
+        >
 
         <EditText
             android:id="@+id/direccion3"
-            style="@android:style/Widget.EditText"
-            android:layout_width="300dp"
+            android:layout_width="360dp"
             android:layout_height="40dp"
             android:layout_alignLeft="@+id/ciudad3"
             android:layout_alignStart="@+id/ciudad3"
             android:layout_below="@+id/ciudad3"
             android:hint="ingrese la direccion"
+
+            android:background="@drawable/layout_borde"
             android:inputType="text" />
 
         <EditText
             android:id="@+id/ciudad3"
-            style="@android:style/Widget.Holo.EditText"
-            android:layout_width="300dp"
+            android:layout_width="360dp"
             android:layout_height="40dp"
             android:layout_below="@+id/nuevo"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+
             android:hint="ingrese la ciudad"
+
+            android:background="@drawable/layout_borde"
             android:inputType="text" />
 
         <Spinner
             android:id="@+id/spinnerTipo"
-            android:layout_width="300dp"
+            android:layout_width="360dp"
             android:layout_height="40dp"
             android:layout_above="@+id/spinnerCliente"
             android:dropDownWidth="match_parent"
             android:spinnerMode="dialog"
             android:text="seleccione tipo"
+
+            android:background="@drawable/layout_borde"
             android:visibility="visible" />
 
         <Spinner
             android:id="@+id/spinnerCliente"
-            android:layout_width="300dp"
+            android:layout_width="360dp"
             android:layout_height="40dp"
             android:layout_above="@+id/dateValue"
             android:dropDownWidth="match_parent"
             android:spinnerMode="dialog"
+
+            android:background="@drawable/layout_borde"
             android:text="seleccione cliente" />
 
         <EditText
             android:id="@+id/descripcionNuevo"
             style="@android:style/Widget.DeviceDefault.EditText"
-            android:layout_width="300dp"
+            android:layout_width="360dp"
             android:layout_height="40dp"
             android:layout_above="@+id/btnCarga"
             android:layout_alignLeft="@+id/dateValue"
             android:layout_alignStart="@+id/dateValue"
 
+            android:background="@drawable/layout_borde"
             android:hint="ingrese Descripcion"
             android:inputType="text" />
 
 
         <Spinner
             android:id="@+id/spinnerCarga"
-            android:layout_width="300dp"
+            android:layout_width="360dp"
             android:layout_height="40dp"
             android:layout_above="@+id/btnCarga"
             android:layout_centerHorizontal="true"
 
+            android:background="@drawable/layout_borde"
             android:spinnerMode="dialog"
             android:text="seleccione carga" />
 
 
-    <LinearLayout
-        android:id="@+id/borde2"
-        android:layout_width="300dp"
-        android:layout_height="350dp"
-        android:layout_below="@+id/nuevo"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/layout_borde"
-        android:orientation="horizontal">
-        <ImageButton
-            android:id="@+id/btnCalendar"
-            style="@android:style/Widget.Holo.ImageButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <LinearLayout
+            android:id="@+id/borde2"
+            android:layout_width="360dp"
+            android:layout_height="350dp"
+            android:layout_below="@+id/nuevo"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/layout_borde"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnCalendar"
+                style="@android:style/Widget.Holo.ImageButton"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
 
 
-            android:background="@drawable/calendario"
-            android:text="@string/calendar"
-            android:layout_below="@+id/borde"
-            android:layout_toLeftOf="@+id/nuevo"
-            android:layout_toStartOf="@+id/nuevo" />
+                android:layout_below="@+id/borde"
+                android:layout_toLeftOf="@+id/nuevo"
+                android:layout_toStartOf="@+id/nuevo"
+                android:background="@drawable/calendario"
+                android:text="@string/calendar" />
 
 
-        <TextView
-            android:id="@+id/dateValue"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-
-            android:layout_alignLeft="@+id/textusuario"
-            android:layout_alignStart="@+id/textusuario"
-            android:layout_below="@+id/borde"
-            android:text=""
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <TextView
+                android:id="@+id/dateValue"
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:textSize="30dp"
+                android:background="@drawable/layout_borde"
+                android:layout_alignLeft="@+id/textusuario"
+                android:layout_alignStart="@+id/textusuario"
+                android:layout_below="@+id/borde"
+                android:textAlignment="center"
+                android:text="fecha"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
         </LinearLayout>

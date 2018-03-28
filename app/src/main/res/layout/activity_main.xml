@@ -8,16 +8,13 @@
 
 
     <ImageButton
+        android:id="@+id/entrega"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:id="@+id/entrega"
-        android:background="@drawable/entrega"
-        android:layout_marginRight="17dp"
-        android:layout_marginEnd="17dp"
-        android:layout_below="@+id/name"
-        android:layout_toLeftOf="@+id/btnLogout"
-        android:layout_toStartOf="@+id/btnLogout"
-        android:layout_marginTop="13dp" />
+        android:layout_below="@+id/cuenta"
+        android:layout_toLeftOf="@+id/cuenta"
+        android:layout_toStartOf="@+id/cuenta"
+        android:background="@drawable/entrega" />
     <ImageButton
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -30,40 +27,40 @@
         android:layout_marginStart="12dp" />
 
     <ImageButton
-        android:layout_width="70dp"
-        android:layout_height="70dp"
         android:id="@+id/estadisticas"
-        android:background="@drawable/estadistica"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/entrega"
-        android:layout_alignLeft="@+id/name"
-        android:layout_alignStart="@+id/name" />
-
-    <ImageButton
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_alignLeft="@+id/textnuevo"
+        android:layout_alignStart="@+id/textnuevo"
+        android:layout_below="@+id/textnuevo"
+        android:background="@drawable/estadistica" />
+
+    <ImageButton
         android:id="@+id/consulta"
-        android:background="@drawable/consulta"
-        android:layout_above="@+id/textconsulta"
-        android:layout_alignLeft="@+id/textentrega"
-        android:layout_alignStart="@+id/textentrega" />
-    <ImageButton
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:id="@+id/configuracion"
-        android:background="@drawable/configuracion"
-        android:layout_below="@+id/nuevo"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView" />
+        android:layout_alignLeft="@+id/textentrega"
+        android:layout_alignStart="@+id/textentrega"
+        android:layout_below="@+id/textentrega"
+        android:background="@drawable/consulta" />
 
     <ImageButton
+        android:id="@+id/configuracion"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_alignLeft="@+id/textconsulta"
+        android:layout_alignStart="@+id/textconsulta"
+        android:layout_below="@+id/textconsulta"
+        android:background="@drawable/configuracion" />
+
+    <ImageButton
         android:id="@+id/nuevo"
-        android:background="@drawable/nuevo"
-        android:layout_alignTop="@+id/textestadistica"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_alignLeft="@+id/textretiro"
-        android:layout_alignStart="@+id/textretiro" />
+        android:layout_alignStart="@+id/textretiro"
+        android:layout_below="@+id/textretiro"
+        android:background="@drawable/nuevo" />
 
     <TextView
         android:id="@+id/name"
@@ -75,6 +72,7 @@
         android:visibility="visible"
         tools:text="menu"
         android:layout_below="@+id/imageView"
+        android:textStyle="bold"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -83,6 +81,7 @@
         android:layout_height="30dp"
         android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"
+        android:textStyle="bold"
         android:text="cuenta"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat"
@@ -109,7 +108,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/tecsoft"
+        android:background="@drawable/igps"
         android:layout_marginTop="16dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -122,6 +121,7 @@
         android:layout_alignStart="@+id/entrega"
         android:layout_below="@+id/entrega"
         android:text="Entrega"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:visibility="visible"
         tools:text="Entrega" />
@@ -134,6 +134,7 @@
         android:textAlignment="center"
         android:visibility="visible"
         tools:text="Configuracion"
+        android:textStyle="bold"
         android:layout_alignLeft="@+id/configuracion"
         android:layout_alignStart="@+id/configuracion"
         android:layout_below="@+id/configuracion" />
@@ -146,6 +147,7 @@
         android:textAlignment="center"
         android:visibility="visible"
         tools:text="Nuevo"
+        android:textStyle="bold"
         android:layout_below="@+id/nuevo"
         android:layout_alignLeft="@+id/nuevo"
         android:layout_alignStart="@+id/nuevo" />
@@ -157,6 +159,7 @@
         android:textAlignment="center"
         android:text="Retiro"
         android:visibility="visible"
+        android:textStyle="bold"
         tools:text="Retiro"
         android:layout_below="@+id/retiro"
         android:layout_alignLeft="@+id/retiro"
@@ -168,6 +171,7 @@
         android:layout_height="40dp"
         android:text="Estadisticas"
         android:textAlignment="center"
+        android:textStyle="bold"
         android:visibility="visible"
         tools:text="Estadisticas"
         android:layout_below="@+id/estadisticas"
@@ -180,8 +184,9 @@
         android:layout_height="40dp"
         android:layout_alignLeft="@+id/consulta"
         android:layout_alignStart="@+id/consulta"
-        android:layout_alignTop="@+id/configuracion"
+        android:layout_below="@+id/consulta"
         android:text="Consulta"
+        android:textStyle="bold"
         tools:text="Consulta" />
 
 

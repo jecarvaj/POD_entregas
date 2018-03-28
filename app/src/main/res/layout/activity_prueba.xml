@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+
+
+    android:padding="10dp"
+    android:background="@color/white"
+    tools:context="com.example.jean.prueba1.activity.PruebaActivity">
+
+
+    <TextView
+        android:id="@+id/ordenes3"
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+
+        android:layout_below="@+id/textCuenta3"
+        android:layout_centerHorizontal="true"
+        android:text="Ordenes De Trabajo"
+        android:textAlignment="center"
+        android:textSize="21dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="123dp"
+        tools:text="Ordenes De Trabajo" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/igps"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+
+    <TextView
+        android:id="@+id/textCuenta3"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:text="nuevo"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="150dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+
+    <EditText
+        android:id="@+id/edittext1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignEnd="@+id/ordenes3"
+        android:layout_alignLeft="@+id/ordenes3"
+        android:layout_alignRight="@+id/ordenes3"
+        android:layout_alignStart="@+id/ordenes3"
+        android:layout_below="@+id/ordenes3"
+        android:gravity="center"
+        android:hint="Buscar"></EditText>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/edittext1"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/layout_borde" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressbar"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

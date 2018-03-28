@@ -6,10 +6,10 @@
 
 
 
-    <color name="primary">#01579b</color>
+    <color name="primary">#FFFFFF</color>
     <color name="primary_dark">#002f6c
     </color>
-    <color name="primary_light">#4f83cc</color>
+    <color name="primary_light">#f6f7f7</color>
     <color name="accent">#00bcd4</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>

@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jean.prueba1">
-
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true"/>
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="adjustPan">
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode"/>
+
         <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +33,14 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.ConsultaActivity" />
-        <activity android:name=".activity.NuevoActivity"></activity>
+        <activity
+            android:name=".activity.NuevoActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.Entrega2Activity" />
+        <activity
+            android:name=".activity.PruebaActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.PruebaInfoActivity"></activity>
     </application>
 
 </manifest>

@@ -18,6 +18,8 @@
         android:text="CONSULTAR"
         android:textAlignment="center"
         tools:text="CONSULTAR"
+        android:textStyle="bold"
+        android:textSize="21dp"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true" />
 
@@ -25,11 +27,11 @@
         android:id="@+id/imageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/tecsoft"
+        android:layout_alignLeft="@+id/textView2"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/textView2"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/igps" />
 
 
 
@@ -38,6 +40,7 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:text="nuevo"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:layout_below="@+id/imageView"
         android:layout_alignLeft="@+id/consulta"
@@ -57,11 +60,14 @@
         android:id="@+id/numero_orden"
         android:layout_width="171dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+
         android:hint="número de orden"
+        android:textAlignment="center"
         android:inputType="number"
+        android:textStyle="bold"
         android:maxLines="1"
         android:padding="10dp"
+        android:background="@drawable/layout_borde"
         android:textColor="@color/primary_text"
         android:textColorHint="@color/secondary_text" />
 
@@ -90,45 +96,73 @@
         android:orientation="vertical">
 
         <LinearLayout
-            style="@style/layoutConsulta">
+            style="@style/layoutConsulta"
+            android:layout_height="50dp">
             <TextView
                 android:id="@+id/nombre"
                 android:text="Nombre Movil :"
                 style="@style/tv_consulta1"
                 android:layout_weight="0.65"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:layout_height="50dp"
+                android:background="@drawable/layout_borde"
                 />
             <TextView
                 android:id="@+id/nombre2"
                 style="@style/tv_consulta1"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:layout_height="50dp"
+                android:background="@drawable/layout_borde"
                 android:layout_weight="0.35"/>
         </LinearLayout>
 
         <LinearLayout
-            style="@style/layoutConsulta">
+            style="@style/layoutConsulta"
+            android:layout_height="50dp"
+            >
             <TextView
                 android:id="@+id/nombre_cliente"
                 style="@style/tv_consulta1"
                 android:layout_weight="0.65"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:layout_height="50dp"
+                android:background="@drawable/layout_borde"
                 android:text="Cliente:" />
                 />
             <TextView
                 android:id="@+id/nombre_cliente2"
                 style="@style/tv_consulta1"
                 android:layout_weight="0.35"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
+                android:textStyle="bold"
                 />
         </LinearLayout>
 
         <LinearLayout
-            style="@style/layoutConsulta">
+            style="@style/layoutConsulta"
+            android:layout_height="50dp">
             <TextView
                 android:id="@+id/numero"
                 android:text="Número:"
                 style="@style/tv_consulta1"
                 android:layout_weight="0.65"
+                android:textSize="15dp"
+                android:layout_height="50dp"
+                android:textStyle="bold"
+                android:background="@drawable/layout_borde"
                 />
             <TextView
                 android:id="@+id/numero2"
                 style="@style/tv_consulta1"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:background="@drawable/layout_borde"
                 android:layout_weight="0.35"/>
         </LinearLayout>
 
@@ -137,12 +171,20 @@
             <TextView
                 android:id="@+id/estado"
                 android:text="Estado:"
+                android:textStyle="bold"
                 style="@style/tv_consulta1"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
                 android:layout_weight="0.65"
                 />
             <TextView
                 android:id="@+id/estado2"
                 style="@style/tv_consulta1"
+                android:textStyle="bold"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
                 android:layout_weight="0.35"/>
         </LinearLayout>
 
@@ -150,84 +192,139 @@
             style="@style/layoutConsulta">
             <TextView
                 android:id="@+id/direccion"
-                android:text="Dirección de entrega:"
+                android:text="Dirección:"
+                android:textStyle="bold"
                 style="@style/tv_consulta1"
+                android:textSize="15dp"
+                android:layout_height="50dp"
+                android:background="@drawable/layout_borde"
                 android:layout_weight="0.65"
                 />
             <TextView
                 android:id="@+id/direccion2"
                 style="@style/tv_consulta1"
-                android:layout_weight="0.35"/>
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/layoutConsulta">
-            <TextView
-                android:id="@+id/observacion"
-                android:text="Observación:"
-                style="@style/tv_consulta1"
-                android:layout_weight="0.65"
-                />
-            <TextView
-                android:id="@+id/observacion2"
-                style="@style/tv_consulta1"
-                android:layout_weight="0.35"/>
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/layoutConsulta">
-            <TextView
-                android:id="@+id/descripcion"
-                android:text="Descripción:"
-                style="@style/tv_consulta1"
-                android:layout_weight="0.65"
-                />
-            <TextView
-                android:id="@+id/descripcion2"
-                style="@style/tv_consulta1"
-                android:layout_weight="0.35"/>
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/layoutConsulta">
-            <TextView
-                android:id="@+id/fecha"
-                android:text="Fecha y hora entrega:"
-                style="@style/tv_consulta1"
-                android:layout_weight="0.65"
-                />
-            <TextView
-                android:id="@+id/fecha2"
-                style="@style/tv_consulta1"
-                android:layout_weight="0.35"/>
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/layoutConsulta">
-            <TextView
-                android:id="@+id/manifiesto"
-                android:text="Manifiesto:"
-                style="@style/tv_consulta1"
-                android:layout_weight="0.65"
-                />
-            <TextView
-                android:id="@+id/manifiesto2"
-                style="@style/tv_consulta1"
+                android:textStyle="bold"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
                 android:layout_weight="0.35"/>
         </LinearLayout>
 
         <LinearLayout
             style="@style/layoutConsulta"
-            android:background="@color/primary_light">
+            android:layout_height="50dp">
+            <TextView
+                android:id="@+id/observacion"
+                android:text="Observación:"
+                android:textStyle="bold"
+                style="@style/tv_consulta1"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/observacion2"
+                style="@style/tv_consulta1"
+                android:textStyle="bold"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta"
+            android:layout_height="50dp"
+            >
+
+            <TextView
+                android:id="@+id/descripcion"
+                android:text="Descripción:"
+                android:textStyle="bold"
+                style="@style/tv_consulta1"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/descripcion2"
+                style="@style/tv_consulta1"
+                android:textStyle="bold"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta"
+            android:layout_height="50dp">
+            <TextView
+                android:id="@+id/fecha"
+                android:text="Fecha:"
+                android:textStyle="bold"
+                style="@style/tv_consulta1"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
+                android:layout_height="50dp"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/fecha2"
+                style="@style/tv_consulta1"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
+                android:layout_height="50dp"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta"
+            android:layout_height="50dp">
+            <TextView
+                android:id="@+id/manifiesto"
+                android:text="Manifiesto:"
+                android:textStyle="bold"
+                style="@style/tv_consulta1"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
+                android:layout_weight="0.65"
+                />
+            <TextView
+                android:id="@+id/manifiesto2"
+                style="@style/tv_consulta1"
+                android:textStyle="bold"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
+                android:layout_weight="0.35"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/layoutConsulta"
+            android:background="@color/primary_light"
+            android:layout_height="50dp">
             <TextView
                 android:id="@+id/ciudad"
                 android:text="Ciudad:"
+                android:textStyle="bold"
                 style="@style/tv_consulta1"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
                 android:layout_weight="0.65"
                 />
             <TextView
                 android:id="@+id/ciudad2"
                 style="@style/tv_consulta1"
+                android:textStyle="bold"
+                android:layout_height="50dp"
+                android:textSize="15dp"
+                android:background="@drawable/layout_borde"
                 android:layout_weight="0.35"/>
         </LinearLayout>
     </LinearLayout>

@@ -23,14 +23,15 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="60dp"
-            android:background="@drawable/tecsoft" />
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/igps" />
 
 
         <EditText
             android:id="@+id/usuario"
             style="@style/et_login"
             android:inputType="textPersonName"
+            android:background="@drawable/layout_borde"
             android:hint="@string/hint_usuario"
             />
 
@@ -39,6 +40,7 @@
             style="@style/et_login"
             android:inputType="textPassword"
             android:hint="@string/hint_password"
+            android:background="@drawable/layout_borde"
             />
 
         <ImageButton
@@ -49,6 +51,8 @@
 
             android:text="@string/login"
             android:background="@drawable/login"/>
+
+        ∫
     </LinearLayout>
 </ScrollView>
 

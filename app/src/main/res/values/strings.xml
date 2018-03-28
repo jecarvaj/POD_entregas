@@ -19,11 +19,11 @@
     <string name="name">Nombre</string>
 
 
-    <string name="action_settings" >Settings
+    <string name="action_settings">Settings
     </string>
-    <string name="currentDate" >Fecha actual(M-D-AAAA):
+    <string name="currentDate">Fecha actual(M-D-AAAA):
     </string>
-    <string name="calendar" >Calendario</string>
+    <string name="calendar">Calendario</string>
 
 
     <!-- Conjunto de Strings para el View GameSpinner -->
@@ -34,4 +34,5 @@
         <item>Halo 4</item>
         <item>StarCraft II</item>
     </string-array>
+    <string name="title_activity_entrega">EntregaActivity</string>
 </resources>

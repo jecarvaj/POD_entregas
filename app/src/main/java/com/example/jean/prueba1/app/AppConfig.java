@@ -8,20 +8,20 @@ public class AppConfig {
 
 // cambiar direccion del server
  // public static String SERVER="http://192.168.0.12/";
-public static String SERVER="http://192.168.0.103/";
+public static String SERVER="http://192.168.100.18/";
 
 
     // URL de inicio de sesión del servidor
-    public static String URL_LOGIN = SERVER+"prueba1/login.php";
+    public static String URL_LOGIN = SERVER+"api/login.php";
 
 
-    public static String URL_MENU = SERVER+"prueba1/menu.php";
+    public static String URL_MENU = SERVER+"api/menu.php";
 
-    public static String URL_WAYBILL = SERVER+"prueba1/activityNuevo.php";
+    public static String URL_WAYBILL = SERVER+"api/activityNuevo.php";
 
-  public static String URL_NUEVO = SERVER+"prueba1/nuevo.php";
+  public static String URL_NUEVO = SERVER+"api/nuevo.php";
 
-  public static String URL_FORMULARIO = SERVER+"prueba1/formulario.php";
+  public static String URL_FORMULARIO = SERVER+"api/formulario.php";
 
-
+    public static String URL_ENTREGA = SERVER+"api/getEntregas.php";
 }
