@@ -66,9 +66,9 @@ public class Entrega2Activity extends AppCompatActivity {
 
         cuenta = (TextView)findViewById(R.id.textCuenta2) ;
 
-        waybillEntrega2 =getIntent().getExtras().getString("parametro");
+            waybillEntrega2 =getIntent().getExtras().getString("parametro");
             Usuario =getIntent().getExtras().getString("usuario");
-        cuenta.setText(waybillEntrega2);
+            cuenta.setText(waybillEntrega2);
 
 
         text= (TextView)findViewById(R.id.textView2) ;

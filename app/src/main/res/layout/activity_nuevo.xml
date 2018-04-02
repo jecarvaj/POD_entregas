@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/textusuario"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/igps" />
+        android:background="@drawable/logo_3x" />
 
     <TextView
         android:layout_width="80dp"

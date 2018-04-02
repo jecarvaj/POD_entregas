@@ -161,8 +161,9 @@ public class PruebaActivity extends AppCompatActivity {
                 Log.d(TAG, "este es el imei "+ imei2);
 
                 httpServiceClass.AddParam("imei",imei2);
+                httpServiceClass.AddParam("usuario",usuario);
                 httpServiceClass.ExecutePostRequest();
-                httpServiceClass.ExecutePostRequest();
+
 
 
 

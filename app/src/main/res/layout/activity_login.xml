@@ -24,7 +24,7 @@
             android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="80dp"
-            android:background="@drawable/igps" />
+            android:background="@drawable/logo_3x" />
 
 
         <EditText
@@ -45,12 +45,12 @@
 
         <ImageButton
             android:id="@+id/btnLogin"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
+            android:layout_width="210dp"
+            android:layout_height="80dp"
             style="@style/boton"
 
             android:text="@string/login"
-            android:background="@drawable/login"/>
+            android:background="@drawable/login4"/>
 
         ∫
     </LinearLayout>
