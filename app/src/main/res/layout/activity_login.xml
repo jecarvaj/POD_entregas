@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="POD prueba de Entrega(1)"/>
+            android:text="POD : PRUEBA DE ENTREGA"/>
 
         <ImageView
             android:id="@+id/imageView"
@@ -39,6 +39,7 @@
             app:passwordToggleContentDescription="ingrese su usuario"
             app:hintAnimationEnabled="true"
             android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/layout_borde"
             >
 
@@ -50,6 +51,7 @@
                 android:ems="10"
                 app:errorEnabled="true"
                 android:inputType="textPersonName"
+
                 android:singleLine="true"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -61,6 +63,7 @@
             app:passwordToggleContentDescription="ingrese su contraseña"
             app:hintAnimationEnabled="true"
             app:passwordToggleEnabled="true"
+            android:layout_marginBottom="25dp"
             app:errorEnabled="true"
             android:background="@drawable/layout_borde"
             >

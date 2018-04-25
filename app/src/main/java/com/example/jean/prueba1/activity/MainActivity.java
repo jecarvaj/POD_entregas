@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity  {
     private ImageButton entrega;
     private ImageButton nuevo;
     private ImageButton consulta;
-    private ImageButton estadistica;
+    private ImageButton ubicacion;
     private ImageButton retiro;
     private ImageButton qr;
     private TextView textNuevo;
@@ -71,12 +71,11 @@ public class MainActivity extends AppCompatActivity  {
         nuevo =(ImageButton) findViewById(R.id.nuevo);
         qr =(ImageButton) findViewById(R.id.lector2);
         consulta =(ImageButton) findViewById(R.id.consulta);
-        estadistica =(ImageButton) findViewById(R.id.estadisticas);
+        ubicacion =(ImageButton) findViewById(R.id.ubicacion);
         retiro =(ImageButton) findViewById(R.id.retiro);
         textNuevo= (TextView) findViewById(R.id.textnuevo);
         textConsulta= (TextView) findViewById(R.id.textconsulta);
         textEntrega= (TextView) findViewById(R.id.textentrega);
-        textEstadistica= (TextView) findViewById(R.id.textestadistica);
         textRetiro= (TextView) findViewById(R.id.textretiro);
       //  txtCuenta = (TextView)findViewById(R.id.cuenta);
 
@@ -138,7 +137,17 @@ public class MainActivity extends AppCompatActivity  {
             intent2.putExtra("parametro",usuario);
             startActivity(intent2);
             } });
+
+
+        ubicacion.setOnClickListener(new View.OnClickListener()
+        { @Override public void onClick(View v) {
+            Intent intent4 = new Intent (MainActivity.this, MyLocationUsingLocationAPI.class);
+            intent4.putExtra("parametro",usuario);
+            startActivity(intent4);
+        } });
     }
+
+
 
 
     public void initToolBar() {
@@ -173,6 +182,9 @@ public class MainActivity extends AppCompatActivity  {
                 onBackPressed();
                 return true;
             case R.id.confi:
+
+                return true;
+            case R.id.estadisticas:
 
                 return true;
             default:
@@ -307,23 +319,6 @@ public class MainActivity extends AppCompatActivity  {
                                     break;
                             }
                             // comprobamos por la visibilidad del icono "estadisticas"
-                            switch (esta) {
-
-                                case "1":
-                                    estadistica.setEnabled(true);
-                                  //  estadistica.setVisibility(View.VISIBLE);
-                                   // textEstadistica.setVisibility(View.VISIBLE);
-
-                                    break;
-
-                                case "0":
-                                    estadistica.setEnabled(false);
-                                   // estadistica.setVisibility(View.INVISIBLE);
-                                    //textEstadistica.setVisibility(View.INVISIBLE);
-                                    break;
-                                default:
-                                    break;
-                            }
 
 
                         } catch (JSONException e) {

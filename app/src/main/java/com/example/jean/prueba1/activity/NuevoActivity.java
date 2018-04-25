@@ -1,10 +1,11 @@
 package com.example.jean.prueba1.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -34,12 +36,11 @@ import com.example.jean.prueba1.helper.SessionManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 /*
@@ -52,7 +53,7 @@ public class NuevoActivity extends AppCompatActivity  {
     private Intent intent;
     private TextView textView;
     String usuario;
-    private ImageButton btnAgregar;
+    private Button btnAgregar;
     private TextView txtAgregar;
     // array para listar las frutas
     private ArrayList<String> frutasList;
@@ -62,7 +63,9 @@ public class NuevoActivity extends AppCompatActivity  {
     ProgressDialog pDialog;
      Spinner tipoCarga;
      Spinner tipoCliente;
+    Calendar date;
      Spinner tipo;
+     Button fecha2;
    String envioTipo, envioCarga, envioCliente;
      String recibirNombre, recibirCliente, recibirCarga;
     String enviarDireccion, enviarDescripcion, enviarFecha, enviarWaybill, fecha,envioCiudad2;
@@ -88,7 +91,7 @@ public class NuevoActivity extends AppCompatActivity  {
         direccion =(EditText) findViewById(R.id.direccion3);
         descripcion =(EditText) findViewById(R.id.descripcionNuevo);
         envioCiudad =(EditText) findViewById(R.id.ciudad3);
-        btnAgregar =(ImageButton) findViewById(R.id.btnCarga);
+        btnAgregar =(Button) findViewById(R.id.btnCarga);
         tvDateValue = (TextView) findViewById(R.id.dateValue);
 
         usuario = getIntent().getExtras().getString("parametro");
@@ -96,15 +99,38 @@ public class NuevoActivity extends AppCompatActivity  {
 
         context = this;
         // Definición del botón calendar
-        final ImageButton btnOpenPopup = (ImageButton) findViewById(R.id.btnCalendar);
-        btnOpenPopup.setOnClickListener(new Button.OnClickListener(){
+        fecha2 = (Button) findViewById(R.id.btnCalendar);
+        //btnOpenPopup.setOnClickListener(new Button.OnClickListener(){
 
+
+        fecha2.setOnClickListener(new View.OnClickListener() {
             @Override
-            /**
-             * Al pulsar sobre el boton se abre la ventana modal con el componente DatePicker
-             */
-            public void onClick(View arg0) {
-                showDatePickerDialog(arg0);
+            public void onClick(View v) {
+
+
+                final Calendar currentDate = Calendar.getInstance();
+                date = Calendar.getInstance();
+                new DatePickerDialog(NuevoActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        date.set(year, monthOfYear, dayOfMonth);
+                        new TimePickerDialog(NuevoActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                                date.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                                date.set(Calendar.MINUTE, minute);
+                                // inicial=date.getTime().toString();
+                                DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+
+                                SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy
+                                fecha = sdfDate.format(date.getTime());
+                                // inicial = dateFormat.format(date.getTime());
+                                Log.v("The choosen one ", "The choosen one " + date.getTime());
+                            }
+                        }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
+                    }
+                }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
+
             }
         });
 
@@ -123,14 +149,6 @@ public class NuevoActivity extends AppCompatActivity  {
         // }
     }
 
-    /**
-     * Abre la ventana modal
-     * @param v
-     */
-    public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(context.getFragmentManager(), "datePicker");
-    }
 
 
     public void checkNuevo(final String usuario) {
@@ -229,7 +247,7 @@ public void spinner(final String recibirCarga, final String recibirCliente)
     this.recibirCliente = recibirCliente;
 
 
-    String[] carga = {recibirCarga,"normal","pesado"};
+    String[] carga = {"ELIGA EL TIPO DE CARGA:",recibirCarga,"normal","pesado"};
     tipoCarga.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, carga));
     tipoCarga.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -248,7 +266,7 @@ public void spinner(final String recibirCarga, final String recibirCliente)
         }
     });
 
-    String[] valores = {"Express","Normal","Despacho en 24 Horas","Despacho en 48 Horas"};
+    String[] valores = {"ELIGA SU DESPACHO:","Express","Normal","Despacho en 24 Horas","Despacho en 48 Horas"};
     tipo.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, valores));
     tipo.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -268,7 +286,7 @@ public void spinner(final String recibirCarga, final String recibirCliente)
     });
 
 
-    String[] valores2 = {recibirCliente};
+    String[] valores2 = {"ELIGA EL CLIENTE:", recibirCliente};
     tipoCliente.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, valores2));
     tipoCliente.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -301,13 +319,45 @@ public void spinner(final String recibirCarga, final String recibirCliente)
             else if(envioCiudad2.isEmpty()){
                 Toast.makeText(getApplicationContext(), "Debe ingresar la ciudad de la orden!", Toast.LENGTH_SHORT).show();
             }
-            else if(fecha.isEmpty()){
+            else if(fecha == null){
                 Toast.makeText(getApplicationContext(), "Debe ingresar la fecha de envio de la orden!", Toast.LENGTH_SHORT).show();
+            }
+            else if(envioCarga == null || envioCarga.equals("ELIGA EL TIPO DE CARGA:")){
+                Toast.makeText(getApplicationContext(), "Debe elegir el tipo de carga!", Toast.LENGTH_SHORT).show();
+            }
+            else if(envioCliente == null || envioCliente.equals("ELIGA EL CLIENTE:")){
+                Toast.makeText(getApplicationContext(), "Debe elegir el cliente!", Toast.LENGTH_SHORT).show();
+            }
+            else if(envioTipo == null || envioTipo.equals("ELIGA SU DESPACHO:")){
+                Toast.makeText(getApplicationContext(), "Debe elegir el tipo de despacho !", Toast.LENGTH_SHORT).show();
             }
 
            else{
-                formulario( usuario,  enviarDireccion,  enviarDescripcion, envioCarga,  envioCliente, envioTipo, fecha, envioCiudad2);
 
+
+
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(NuevoActivity.this);
+                builder.setMessage("ESTA SEGURO SE SUBIR ESTA ORDEN?")
+                        .setCancelable(false)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                formulario( usuario,  enviarDireccion,  enviarDescripcion, envioCarga,  envioCliente, envioTipo, fecha, envioCiudad2);
+                                // termina la actividad y la recarga
+                                finish();
+                                startActivity(getIntent());
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
            }
         }
     });
@@ -316,60 +366,6 @@ public void spinner(final String recibirCarga, final String recibirCliente)
 
 
 }
-    public class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener {
 
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Usar del defecto la fecha actual
-            final Calendar c = Calendar.getInstance();
-            try {
-                // Si en algun momento se ha informado la fecha se recupera
-                String format = "yyyy-MM-dd";
-                SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
-                c.setTime(sdf.parse(String.valueOf(tvDateValue.getText())));
-            } catch (ParseException e) {
-                // Si falla utilizaremos la fecha actual
-            }
-
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-            // Create a new instance of TimePickerDialog and return it
-            return new DatePickerDialog(getActivity(), this, year, month, day);
-        }
-
-        /**
-         * Recupera el valor seleccionado en el componente DatePicker e inserta el valor en el
-         * TextView tvDate
-         *
-         * @param view
-         * @param year
-         * @param month
-         * @param day
-         */
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            try{
-                final Calendar c = Calendar.getInstance();
-                c.set(year, month, day);
-                String format = "yyyy-MM-dd";
-                SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
-                tvDateValue.setText(sdf.format(c.getTime()));
-                fecha = tvDateValue.getText().toString().trim();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
-   /* @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }*/
 

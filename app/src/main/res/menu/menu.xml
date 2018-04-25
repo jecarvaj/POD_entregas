@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <item
         android:id="@+id/miCompose"
         android:icon="@drawable/logout_final"
         app:showAsAction="ifRoom"
-        android:title="Compose">
+        android:title="salir">
     </item>
     <item
         android:id="@+id/confi"
         android:icon="@drawable/gear2"
-        app:showAsAction="ifRoom"
-        android:title="Compose">
+        app:showAsAction="always"
+        android:title="nada">
+    </item>
+    <item
+        android:id="@+id/estadisticas"
+        android:icon="@drawable/estadisticas"
+        app:showAsAction="always"
+        android:title="estadisticas">
     </item>
 
 </menu>

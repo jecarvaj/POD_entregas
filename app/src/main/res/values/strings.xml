@@ -25,7 +25,7 @@
     </string>
     <string name="calendar">Calendario</string>
 
-
+    <string name="quotedesc">Welcome! Where should we deliver to?</string>
     <!-- Conjunto de Strings para el View GameSpinner -->
     <string-array name="Games">
         <item>League of Legends</item>

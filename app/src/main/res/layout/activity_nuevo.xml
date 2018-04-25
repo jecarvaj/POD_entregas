@@ -11,17 +11,17 @@
         android:id="@+id/imageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_alignEnd="@+id/textusuario"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/textusuario"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/logo_3x" />
 
     <TextView
-        android:layout_width="80dp"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
         android:id="@+id/nuevo"
-        android:text="NUEVO"
+        android:text="DESPACHO DE ORDENES"
+        android:textColor="@color/colorPrimary"
         android:textAlignment="center"
         android:layout_below="@+id/textusuario"
         android:layout_centerHorizontal="true" />
@@ -30,153 +30,227 @@
         android:id="@+id/textusuario"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="nuevo"
-        android:textAlignment="center"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
         android:layout_below="@+id/imageView"
-        android:layout_alignRight="@+id/nuevo"
-        android:layout_alignEnd="@+id/nuevo" />
+        android:text="nuevo"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center" />
 
-
-    <ImageButton
+    <Button
         android:id="@+id/btnCarga"
-        android:layout_width="100dp"
+        style="@style/proceedButtonStyle"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="ENVIAR"
-
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/nuevo"
-        android:layout_alignStart="@+id/nuevo"
-        android:background="@drawable/enviar"
-        android:layout_marginBottom="14dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:background="@color/proceed_enable"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:text="ENVIAR ORDEN" />
 
 
-    <LinearLayout
-        android:id="@+id/borde"
-        android:layout_width="360dp"
-        android:layout_height="350dp"
-
-        android:layout_below="@+id/nuevo"
-
-        android:orientation="vertical"
-        android:padding="2dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/layout_borde"
-        >
-
-        <EditText
-            android:id="@+id/direccion3"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
-            android:layout_alignLeft="@+id/ciudad3"
-            android:layout_alignStart="@+id/ciudad3"
-            android:layout_below="@+id/ciudad3"
-            android:hint="ingrese la direccion"
-
-            android:background="@drawable/layout_borde"
-            android:inputType="text" />
-
-        <EditText
-            android:id="@+id/ciudad3"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/nuevo"
-            android:layout_centerHorizontal="true"
-
-            android:hint="ingrese la ciudad"
-
-            android:background="@drawable/layout_borde"
-            android:inputType="text" />
-
-        <Spinner
-            android:id="@+id/spinnerTipo"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
-            android:layout_above="@+id/spinnerCliente"
-            android:dropDownWidth="match_parent"
-            android:spinnerMode="dialog"
-            android:text="seleccione tipo"
-
-            android:background="@drawable/layout_borde"
-            android:visibility="visible" />
-
-        <Spinner
-            android:id="@+id/spinnerCliente"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
-            android:layout_above="@+id/dateValue"
-            android:dropDownWidth="match_parent"
-            android:spinnerMode="dialog"
-
-            android:background="@drawable/layout_borde"
-            android:text="seleccione cliente" />
-
-        <EditText
-            android:id="@+id/descripcionNuevo"
-            style="@android:style/Widget.DeviceDefault.EditText"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
-            android:layout_above="@+id/btnCarga"
-            android:layout_alignLeft="@+id/dateValue"
-            android:layout_alignStart="@+id/dateValue"
-
-            android:background="@drawable/layout_borde"
-            android:hint="ingrese Descripcion"
-            android:inputType="text" />
-
-
-        <Spinner
-            android:id="@+id/spinnerCarga"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
-            android:layout_above="@+id/btnCarga"
-            android:layout_centerHorizontal="true"
-
-            android:background="@drawable/layout_borde"
-            android:spinnerMode="dialog"
-            android:text="seleccione carga" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_below="@+id/nuevo">
 
 
         <LinearLayout
-            android:id="@+id/borde2"
-            android:layout_width="360dp"
-            android:layout_height="350dp"
-            android:layout_below="@+id/nuevo"
-            android:layout_centerHorizontal="true"
+            android:id="@+id/borde"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:background="@drawable/layout_borde"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btnCalendar"
-                style="@android:style/Widget.Holo.ImageButton"
-                android:layout_width="70dp"
-                android:layout_height="40dp"
 
 
-                android:layout_below="@+id/borde"
-                android:layout_toLeftOf="@+id/nuevo"
-                android:layout_toStartOf="@+id/nuevo"
-                android:background="@drawable/calendario"
-                android:text="@string/calendar" />
+            android:layout_below="@+id/nuevo"
+            android:layout_marginTop="13dp"
+            android:orientation="vertical"
+            android:padding="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/activity_vertical_margin2"
+                android:orientation="horizontal"
+                android:background="@drawable/borde3">
 
 
-            <TextView
-                android:id="@+id/dateValue"
-                android:layout_width="320dp"
-                android:layout_height="40dp"
-                android:textSize="30dp"
-                android:background="@drawable/layout_borde"
-                android:layout_alignLeft="@+id/textusuario"
-                android:layout_alignStart="@+id/textusuario"
-                android:layout_below="@+id/borde"
-                android:textAlignment="center"
-                android:text="fecha"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                <EditText
+                    android:id="@+id/direccion3"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_alignLeft="@+id/ciudad3"
+                    android:layout_alignStart="@+id/ciudad3"
+                    android:layout_below="@+id/ciudad3"
+                    android:layout_weight=".8"
+
+                    android:hint="INGRESE LA DIRECCIÓN"
+
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/activity_vertical_margin2"
+                android:background="@drawable/borde3"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/ciudad3"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_below="@+id/nuevo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight=".8"
+
+                    android:hint="INGRESE LA CIUDAD"
+
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/activity_vertical_margin2"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:background="@drawable/borde3">
+
+
+                <EditText
+                    android:id="@+id/descripcionNuevo"
+                    style="@android:style/Widget.DeviceDefault.EditText"
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_above="@+id/btnCarga"
+                    android:layout_alignLeft="@+id/dateValue"
+                    android:layout_alignStart="@+id/dateValue"
+                    android:layout_weight=".8"
+
+
+                    android:hint="INGRESE LA DESCRIPCIÓN"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/activity_vertical_margin2"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:background="@drawable/borde3">
+
+
+                <Spinner
+                    android:id="@+id/spinnerTipo"
+                    style="@style/SpinnerTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_above="@+id/spinnerCliente"
+                    android:layout_weight=".8"
+                    android:drawSelectorOnTop="true"
+                    android:dropDownWidth="match_parent"
+                    android:hint="Ingrese el tipo de carga"
+                    android:spinnerMode="dialog"
+                    android:textColor="#808080"
+                    android:visibility="visible" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/activity_vertical_margin2"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:background="@drawable/borde3">
+
+
+                <Spinner
+                    android:id="@+id/spinnerCliente"
+                    style="@style/SpinnerTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_above="@+id/dateValue"
+                    android:layout_weight=".8"
+                    android:drawSelectorOnTop="true"
+                    android:dropDownWidth="match_parent"
+                    android:hint="Ingrese Cliente"
+                    android:spinnerMode="dialog"
+                    android:textColor="#808080"
+
+
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/activity_vertical_margin2"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:background="@drawable/borde3">
+
+
+                <Spinner
+                    android:id="@+id/spinnerCarga"
+                    style="@style/SpinnerTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_above="@+id/btnCarga"
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight=".8"
+                    android:drawSelectorOnTop="true"
+                    android:hint="seleccione carga"
+                    android:spinnerMode="dialog"
+
+                    android:textColor="#808080" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/activity_vertical_margin2"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/btnCalendar"
+                    style="@android:style/Widget.Holo.ImageButton"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/borde"
+
+                    android:layout_toLeftOf="@+id/nuevo"
+                    android:layout_toStartOf="@+id/nuevo"
+                    android:layout_weight=".8"
+                    android:background="@color/colorPrimary"
+                    android:text="ELIGA LA FECHA DEL DESPACHO" />
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
-    </LinearLayout>
-
-
-
+    </ScrollView>
 
 </RelativeLayout>

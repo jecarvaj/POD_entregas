@@ -7,8 +7,10 @@
 
 
     <color name="primary">#FFFFFF</color>
+    <color name="colorPrimary">#2D9CDB</color>
     <color name="primary_dark">#002f6c
     </color>
+    <color name="colorPrimaryDark">#2992CD</color>
     <color name="primary_light">#f6f7f7</color>
     <color name="accent">#00bcd4</color>
     <color name="primary_text">#212121</color>
@@ -29,4 +31,9 @@
     <color name="rojo">#bf2020</color>
     <color name="verde">#16b44b</color>
     <color name="celeste">#408bc1</color>
+
+
+    <color name="proceed_disable">#DEDEDE</color>
+    <color name="proceed_enable">#72D63A</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>

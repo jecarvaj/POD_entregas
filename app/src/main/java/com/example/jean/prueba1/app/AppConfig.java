@@ -19,9 +19,11 @@ public static String SERVER="http://192.168.100.18/";
 
     public static String URL_WAYBILL = SERVER+"api/activityNuevo.php";
 
-  public static String URL_NUEVO = SERVER+"api/nuevo.php";
+    public static String URL_NUEVO = SERVER+"api/nuevo.php";
 
-  public static String URL_FORMULARIO = SERVER+"api/formulario.php";
+    public static String URL_FORMULARIO = SERVER+"api/formulario.php";
+
+    public static String URL_UBICACION = SERVER+"api/Ubicacion.php";
 
     public static String URL_ENTREGA = SERVER+"api/getEntregas.php";
 }
